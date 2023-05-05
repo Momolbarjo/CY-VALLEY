@@ -49,7 +49,7 @@ void randomizer(int plateau[SIZE][SIZE]);
 void print_board(int tab[SIZE][SIZE]);
 void print_Overlay(Player *a);
 void area_print(int tab[SIZE][SIZE], Player *player);
-void move_window(int tab[SIZE][SIZE], Player *player);
+int move_window(int tab[SIZE][SIZE], Player *player);
 void save_game(Player data); 
 int show_menu();
 
