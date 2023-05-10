@@ -11,7 +11,8 @@ void open_website_part(int i) {
 }
 
 void initialise_board(int board[SIZE][SIZE]) {
-  int x, y;
+  int x=0;
+  int y=0;
   // Initialiser le plateau avec des 'U' pour représenter la zone jouable
   for (x = 0; x < SIZE; x++) {
     for (y = 0; y < SIZE; y++) {
@@ -35,7 +36,11 @@ void initialise_board(int board[SIZE][SIZE]) {
 
 void randomizer(int plateau[SIZE][SIZE],Position_Elements a) {
  
-  int nb_herbs, nb_houses,nb_rocks,nb_woods;
+  int nb_herbs=0;
+  int nb_houses=0;
+  int nb_rocks=0;
+  int nb_woods=0;
+    
   srand(time(NULL));
   nb_herbs = (SIZE - 4) * (SIZE - 4) /4; // Calculer le nombre de cases d'herbe à générer
   for (int i = 0; i < nb_herbs; i++) {
