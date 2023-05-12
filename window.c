@@ -1,5 +1,6 @@
 #include "header.h"
 
+
 int move_window(int tab[SIZE][SIZE], Player *player) {
   int score = 0;
 
@@ -51,35 +52,72 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       }
       printf("\n");
     }
+
     // Récupérer la touche frappée par le joueur
     char input[2];
     while(getchar() != '\n'); // vide le tampon d'entrée
     fgets(input, 2, stdin);
     usleep(550000);
     // Déplacer le joueur en conséquence
-    switch (input) {
+    switch (input[0]) {
     case 'z':
-      if (player->posPlayer.pos_x > 2) {
+       if (player->posPlayer.pos_x > 2 && (tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '.' || tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '@')) {
         player->posPlayer.pos_x--;
         window_x--;
-      }
+    }
+    else if(player->posPlayer.pos_x > 2 && tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == 'R') {
+        if(tab[player->posPlayer.pos_x-2][player->posPlayer.pos_y] == '.') {
+            // Push the box to the new position
+            tab[player->posPlayer.pos_x-2][player->posPlayer.pos_y] = 'R';
+            tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] = '.';
+            player->posPlayer.pos_x--;
+            window_x--;
+        }
+    }
       break;
     case 'q':
-      if (player->posPlayer.pos_y > 2) {
+      if (player->posPlayer.pos_y > 2 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='@')) {
         player->posPlayer.pos_y--;
         window_y--;
       }
+      else if(player->posPlayer.pos_x > 2 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='R'){
+      if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y-2] == '.') {
+            // Push the box to the new position
+            tab[player->posPlayer.pos_x][player->posPlayer.pos_y-2] = 'R';
+            tab[player->posPlayer.pos_x][player->posPlayer.pos_y-1] = '.';
+            player->posPlayer.pos_y--;
+            window_y--;
+        }
+      }
       break;
     case 's':
-      if (player->posPlayer.pos_x < SIZE - 3) {
+      if (player->posPlayer.pos_x < SIZE - 3 && (tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='.' || tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='@')) {
         player->posPlayer.pos_x++;
         window_x++;
       }
+      else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='R'){
+      if(tab[player->posPlayer.pos_x+2][player->posPlayer.pos_y] == '.') {
+            // Push the box to the new position
+            tab[player->posPlayer.pos_x+2][player->posPlayer.pos_y] = 'R';
+            tab[player->posPlayer.pos_x+1][player->posPlayer.pos_y] = '.';
+            player->posPlayer.pos_x++;
+            window_x++;
+        }
+      }
       break;
     case 'd':
-      if (player->posPlayer.pos_y < SIZE - 3) {
+      if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
         player->posPlayer.pos_y++;
         window_y++;
+      }
+      else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
+        if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
+            // Push the box to the new position
+            tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] = 'R';
+            tab[player->posPlayer.pos_x][player->posPlayer.pos_y+1] = '.';
+            player->posPlayer.pos_y++;
+            window_y++;
+        }
       }
       break;
       case 'e':
@@ -113,11 +151,11 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
         break;
       
        case '4':
+       ClearScreen();
        return 0;  
        }  
     default:
       printf("Invalid input.\n");
-      getchar();
       break;
     }
   }
