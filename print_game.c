@@ -9,43 +9,6 @@ void Introduction(Player* knight){
 
 }
 
-void print_board(int tab[SIZE][SIZE]) {
-  fflush(stdout);
-  ClearScreen();
-  int x, y;
-
-  for (x = 0; x < SIZE; x++) {
-    for (y = 0; y < SIZE; y++) {
-      if (tab[x][y] == '*') {
-        printf("\u2694 ");
-      } else if (tab[x][y] == '@') {
-        printf("\U0001F33F");
-      } else if (tab[x][y] == '=') {
-        printf( "\U0001F64B"); // Ajout d'un espace après l'emoji
-      } else if (tab[x][y] == '^') {
-        printf("\U0001F9D9");
-      } else if (tab[x][y] == '#') {
-        printf("\U0001F6E1 ");
-      } else if (tab[x][y] == '~') {
-        printf("\U0001F381");
-      } else if (tab[x][y] == 'W') {
-        printf("\U0001FAB5 ");
-      } else if (tab[x][y] == 'R') {
-        printf("\U0001FAA8 ");
-      } else if (tab[x][y] == '!') {
-        printf("\U0001F9CC ");
-      } else if (tab[x][y] == 'H') {
-        printf("\U0001F3E1");
-      } else if (tab[x][y] == 'X') {
-        printf("\U0001F30A");
-      } else {
-        printf("%c ", tab[x][y]);
-      }
-    }
-    printf("\n");
-  }
-}
-
 void print_Overlay(Player *a) {
   
   printf("              \u2694  %s  \u2694",a->name);
@@ -56,6 +19,7 @@ void print_Overlay(Player *a) {
   int longHealth =
       (a->health * Long) / Health_MAX; // Longueur de la barre de vie en
                                        // fonction des points de vie actuels
+
   printf(
       "                                                           Health : [");
   for (int i = 0; i < Long; i++) {
@@ -68,6 +32,8 @@ void print_Overlay(Player *a) {
   }
   printf("]\n");
 
+
+
   printf("                                                            Score:");
 
 //printf("                                                            \n 5",);
@@ -79,6 +45,7 @@ void area_print(int tab[SIZE][SIZE], Player *player){
                  18; // Coordonnée x du coin supérieur gauche de la fenêtre
   int window_y = player->posPlayer.pos_y -
                  18; // Coordonnée y du coin supérieur gauche de la fenêtre
+
     // Afficher la fenêtre
     ClearScreen();
     printf("\n");
