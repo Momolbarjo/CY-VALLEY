@@ -52,9 +52,9 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       printf("\n");
     }
     // Récupérer la touche frappée par le joueur
-    char input;
-    input = getchar();
-    getchar();
+    char input[2];
+    while(getchar() != '\n'); // vide le tampon d'entrée
+    fgets(input, 2, stdin);
     usleep(550000);
     // Déplacer le joueur en conséquence
     switch (input) {
@@ -82,29 +82,39 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
         window_y++;
       }
       break;
-    case 'e':
+      case 'e':
       ClearScreen();
       printf(
           "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n");
-      char choice = getchar();
-      getchar(); // Consume the newline character
-      if (choice == '1') {
-
-      } else if (choice == '2') {
+      char choice[2];
+    while(getchar() != '\n'); // vide le tampon d'entrée
+    fgets(choice, 2, stdin);
+     
+     switch(choice[0]){
+     	
+     	case '1':
+     	
+     	break;
+     	
+       	case '2':
+       	
         ClearScreen();
         printf("Saving...\n");
         sleep(3);
         printf("Game saved!\n");
         sleep(2);
-      } else if (choice == '3') {
+        break;
+        
+        case '3':
+        
         ClearScreen();
         area_print(tab,player);
         sleep(3);
-      }else if (choice == '4') {
-        ClearScreen();
-        return 0;
-      }
-      break;
+        break;
+      
+       case '4':
+       return 0;  
+       }  
     default:
       printf("Invalid input.\n");
       getchar();
