@@ -7,7 +7,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-
+#include <ncurses.h>
 
 #define SIZE 100
 #define ANSI_COLOR_RESET "\x1b[0m"
@@ -18,6 +18,7 @@
 #define ANSI_COLOR_MAGENTA "\x1b[35m"
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_WHITE "\x1b[37m"
+#define FORMAT_STRING "START https://www.youtube.com/watch?v=zRGCzCn5azI/%d" 
 
 typedef struct {
 
@@ -34,11 +35,18 @@ typedef struct {
 } Inventory;
 
 typedef struct {
+  bool npc1;
+  bool npc2;
+} Quests;
+
+
+typedef struct {
   char name[70];
   int health;
   Inventory itemsPlayer;
   Position posPlayer;
   int score;
+  Quests npcs;
 } Player;
 
 void ClearScreen();
@@ -46,11 +54,14 @@ int print_game_instructions();
 void Introduction(Player* knight);
 void initialise_board(int board[SIZE][SIZE]);
 void randomizer(int plateau[SIZE][SIZE]);
+void open_website_part(int i); 
 void print_board(int tab[SIZE][SIZE]);
 void print_Overlay(Player *a);
 void area_print(int tab[SIZE][SIZE], Player *player);
 int move_window(int tab[SIZE][SIZE], Player *player);
-void save_game(Player data); 
+void save_game(Player* data); 
 int show_menu();
+void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs);
 
 #endif
+
