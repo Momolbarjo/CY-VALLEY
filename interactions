@@ -1,0 +1,16 @@
+#include "header.h"
+
+int interaction(int board[SIZE][SIZE], Player* knight) {
+    char input[2];
+    fgets(input, 2, stdin);
+    usleep(550000);
+    // Déplacer le joueur en conséquence
+    input[0] = getchar();
+
+    if(board[knight->posPlayer.pos_x][knight->posPlayer.pos_y] == '@' && input[0] == 'i') {
+        board[knight->posPlayer.pos_x][knight->posPlayer.pos_y] = '.';
+        knight->itemsPlayer.herbs++;
+    } 
+
+    return 0;
+}
