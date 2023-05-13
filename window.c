@@ -64,6 +64,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
        if (player->posPlayer.pos_x > 2 && (tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '.' || tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '@')) {
         player->posPlayer.pos_x--;
         window_x--;
+        player->score++;
     }
     else if(player->posPlayer.pos_x > 2 && tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == 'R') {
         if(tab[player->posPlayer.pos_x-2][player->posPlayer.pos_y] == '.') {
@@ -72,6 +73,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] = '.';
             player->posPlayer.pos_x--;
             window_x--;
+            player->score+=5;  
         }
     }
       break;
@@ -79,6 +81,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       if (player->posPlayer.pos_y > 2 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='@')) {
         player->posPlayer.pos_y--;
         window_y--;
+        player->score++;
       }
       else if(player->posPlayer.pos_x > 2 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='R'){
       if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y-2] == '.') {
@@ -87,13 +90,16 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y-1] = '.';
             player->posPlayer.pos_y--;
             window_y--;
+            player->score+=5;    
         }
+        
       }
       break;
     case 's':
       if (player->posPlayer.pos_x < SIZE - 3 && (tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='.' || tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='@')) {
         player->posPlayer.pos_x++;
         window_x++;
+        player->score++; 
       }
       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='R'){
       if(tab[player->posPlayer.pos_x+2][player->posPlayer.pos_y] == '.') {
@@ -102,6 +108,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             tab[player->posPlayer.pos_x+1][player->posPlayer.pos_y] = '.';
             player->posPlayer.pos_x++;
             window_x++;
+            player->score+=5; 
         }
       }
       break;
@@ -109,6 +116,8 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
         player->posPlayer.pos_y++;
         window_y++;
+        player->score++; 
+
       }
       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
         if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
@@ -117,8 +126,10 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y+1] = '.';
             player->posPlayer.pos_y++;
             window_y++;
+            player->score+=5; 
         }
       }
+      //interaction(tab,player);
       break;
       case 'e':
       ClearScreen();
