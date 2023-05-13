@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <ncurses.h>
 
+
+
 #define SIZE 100
 #define ANSI_COLOR_RESET "\x1b[0m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -62,6 +64,8 @@ int move_window(int tab[SIZE][SIZE], Player *player);
 void save_game(Player* data); 
 int show_menu();
 void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs);
+int interaction(int board[SIZE][SIZE],Player* knight);
 
 #endif
+
 
