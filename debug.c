@@ -37,86 +37,80 @@ void print_board(int tab[SIZE][SIZE]) {
   }
 }
 
-void Secure_Boot(Player* knight,Inventory* invent_player,Position* pos,Quests* npcs){
-    
-    printf("Security checking...");
+void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs) {
 
-    if(invent_player == NULL){
-    printf("Error while loading game due to invent_player struct pointer...");
-}
-     if(invent_player->item1 == NULL){
-    printf("Error while loading game due to item1 pointer...");
-    sleep(3);
-    exit(0);
-}
-     if(invent_player->item2 == NULL){
-    printf("Error while loading game due to item2 pointer...");
-    sleep(3);
-    exit(0);
-}
-     if(invent_player->item3 == NULL){
-    printf("Error while loading game due to item3 pointer...");
-    sleep(3);
-    exit(0);
-}
-     if(invent_player->herbs == NULL){
-    printf("Error while loading game due to herbs pointer...");
-    sleep(3);
-    
-}
-     if(knight == NULL){
-    printf("Error while loading game due to knight struct pointer...");
-    sleep(3);
-    exit(0);
-}
-     if(knight->name == NULL){
-    printf("Error while loading game due to name pointer...");
-    sleep(3);
-    exit(0);
-}
-     if(knight->score == NULL){
-    printf("Error while loading game due to score pointer...");
-    sleep(3);
-    
-}
-    if(knight->health == NULL){
-    printf("Error while loading game due to health pointer...");
-    sleep(3);
-    
-}
-    if(pos == NULL){
-    printf("Error while loading game  due to pos pointer...");
-    sleep(3);
-    
+    printf("Security checking...\n");
 
-}   if(pos->pos_x == NULL){
-    printf("Error while loading game  due to pos_x pointer...");
-    sleep(3);
-    
-}
-    if(pos->pos_y == NULL){
-    printf("Error while loading game due to pos_ypointer...");
-    sleep(3);
+    // Vérification des pointeurs de l'inventaire
+    if (!invent_player) {
+        printf("Error while loading game due to invent_player struct pointer.\n");
+        sleep(3);
+        exit(0);
     }
-    if(npcs == NULL){
-    printf("Error while loading game due to npc struct pointer...");
-    sleep(3);
-    
-}
-    if(npcs->npc1 == NULL){
-    printf("Error while loading game due to npc1 pointer...");
-    sleep(3);
-    
-}
-    if(npcs->npc2 == NULL){
-    printf("Error while loading game due to npc2 pointer...");
-    sleep(3);
-    
-}
-    sleep(2);
-    exit(0);
-    printf("Everything is good");
-    sleep(2);
-    
+    char* invent_ptr_names[] = {"item1", "item2", "item3", "herbs"};
+    void* invent_ptrs[] = {invent_player->item1, invent_player->item2, invent_player->item3, &(invent_player->herbs)};
+    int invent_ptr_count = sizeof(invent_ptrs) / sizeof(void*);
+    for (int i = 0; i < invent_ptr_count; i++) {
+        if (!invent_ptrs[i]) {
+            printf("Error while loading game due to %s pointer.\n", invent_ptr_names[i]);
+            sleep(3);
+            exit(0);
+        }
+    }
 
+    // Vérification des pointeurs du chevalier
+    if (!knight) {
+        printf("Error while loading game due to knight struct pointer.\n");
+        sleep(3);
+        exit(0);
+    }
+    char* knight_ptr_names[] = {"name", "score", "health"};
+    void* knight_ptrs[] = {knight->name, &(knight->score), &(knight->health)};
+    int knight_ptr_count = sizeof(knight_ptrs) / sizeof(void*);
+    for (int i = 0; i < knight_ptr_count; i++) {
+        if (!knight_ptrs[i]) {
+            printf("Error while loading game due to %s pointer.\n", knight_ptr_names[i]);
+            sleep(3);
+            exit(0);
+        }
+    }
+
+    // Vérification des pointeurs de la position
+    if (!pos) {
+        printf("Error while loading game due to pos pointer.\n");
+        sleep(3);
+        exit(0);
+    }
+    char* pos_ptr_names[] = {"pos_x", "pos_y"};
+    void* pos_ptrs[] = {&(pos->pos_x), &(pos->pos_y)};
+    int pos_ptr_count = sizeof(pos_ptrs) / sizeof(void*);
+    for (int i = 0; i < pos_ptr_count; i++) {
+        if (!pos_ptrs[i]) {
+            printf("Error while loading game due to %s pointer.\n", pos_ptr_names[i]);
+            sleep(3);
+            exit(0);
+        }
+    }
+
+    // Vérification des pointeurs des quêtes
+    if (!npcs) {
+        printf("Error while loading game due to npc struct pointer.\n");
+        sleep(3);
+        exit(0);
+    }
+    char* npcs_ptr_names[] = {"npc1", "npc2"};
+    void* npcs_ptrs[] = {&(npcs->npc1), &(npcs->npc2)};
+    int npcs_ptr_count = sizeof(npcs_ptrs) / sizeof(void*);
+    for (int i = 0; i < npcs_ptr_count; i++) {
+        if (npcs_ptrs[i] == NULL) {
+            printf("Error while loading game due to %s pointer.\n", npcs_ptr_names[i]);
+            sleep(3);
+            exit(0);
+        }
+    }
+
+    // Tout est en ordre
+    sleep(3);
+    printf("Everything is good.\n");
+    sleep(2);
 }
