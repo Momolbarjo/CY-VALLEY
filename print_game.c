@@ -4,10 +4,15 @@ void Introduction(Player* knight){
 
    printf("Welcome brave knight...We need you to save our kingdom...But, what's your name ?\n");
       scanf("%s", knight->name);
+      while(strlen(knight->name)>12){
+        printf("Please enter a correct name\n");
+        scanf("%s", knight->name);
+      }
       printf("%s, save us...please\n", knight->name);
       sleep(3);
 
 }
+
 
 void print_Overlay(Player *a) {
   
@@ -21,7 +26,7 @@ void print_Overlay(Player *a) {
                                        // fonction des points de vie actuels
 
   printf(
-      "                                                           Health : [");
+      "\n                                                            Health : [");
   for (int i = 0; i < Long; i++) {
     if (i < longHealth) {
       printf(ANSI_COLOR_RED
@@ -34,18 +39,18 @@ void print_Overlay(Player *a) {
 
 
 
-  printf("                                                            Score:");
+  printf("                                                            Score:%d\n",a->score);
 
-//printf("                                                            \n 5",);
+
+  printf("                                                            Inventory:\n");
+  printf("                                                            \U0001F33F x %d",a->itemsPlayer.herbs);
+
 }
 
 void area_print(int tab[SIZE][SIZE], Player *player){
 
-     int window_x = player->posPlayer.pos_x -
-                 18; // Coordonnée x du coin supérieur gauche de la fenêtre
-  int window_y = player->posPlayer.pos_y -
-                 18; // Coordonnée y du coin supérieur gauche de la fenêtre
-
+     int window_x = player->posPlayer.pos_x - 18; // Coordonnée x du coin supérieur gauche de la fenêtre
+  int window_y = player->posPlayer.pos_y - 18; // Coordonnée y du coin supérieur gauche de la fenêtre  
     // Afficher la fenêtre
     ClearScreen();
     printf("\n");
