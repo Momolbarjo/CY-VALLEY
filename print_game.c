@@ -2,6 +2,20 @@
 
 void Introduction(Player* knight){
 
+  knight->itemsPlayer.herbs=0 ;
+  knight->score=0;
+  knight->health = 100;
+  strcpy(knight->itemsPlayer.item1, ".");
+  strcpy(knight->itemsPlayer.item2, ".");
+  strcpy(knight->itemsPlayer.item3, ".");
+
+  
+  
+
+
+  knight->posPlayer.pos_x = SIZE / 2;
+  knight->posPlayer.pos_y = SIZE / 2;
+
    printf("Welcome brave knight...We need you to save our kingdom...But, what's your name ?\n");
       scanf("%s", knight->name);
       while(strlen(knight->name)>12){
@@ -24,7 +38,6 @@ void print_Overlay(Player *a) {
   int longHealth =
       (a->health * Long) / Health_MAX; // Longueur de la barre de vie en
                                        // fonction des points de vie actuels
-
   printf(
       "\n                                                            Health : [");
   for (int i = 0; i < Long; i++) {
@@ -37,20 +50,23 @@ void print_Overlay(Player *a) {
   }
   printf("]\n");
 
-
-
   printf("                                                            Score:%d\n",a->score);
-
-
   printf("                                                            Inventory:\n");
-  printf("                                                            \U0001F33F x %d",a->itemsPlayer.herbs);
+  printf("                                                            \U0001F33F x %d\n",a->itemsPlayer.herbs);
+  printf("                                                            %s\n",a->itemsPlayer.item1);
+  printf("                                                            %s\n",a->itemsPlayer.item2);
+  printf("                                                            %s\n",a->itemsPlayer.item3);
 
 }
 
 void area_print(int tab[SIZE][SIZE], Player *player){
 
-     int window_x = player->posPlayer.pos_x - 18; // Coordonnée x du coin supérieur gauche de la fenêtre
-  int window_y = player->posPlayer.pos_y - 18; // Coordonnée y du coin supérieur gauche de la fenêtre  
+     int window_x = player->posPlayer.pos_x -
+                 18; // Coordonnée x du coin supérieur gauche de la fenêtre
+  int window_y = player->posPlayer.pos_y -
+                 18; // Coordonnée y du coin supérieur gauche de la fenêtre
+
+  
     // Afficher la fenêtre
     ClearScreen();
     printf("\n");
