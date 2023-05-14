@@ -49,8 +49,19 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
         sleep(3);
     }
 
-
-
-
+    if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '!'){
+        if(strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0){
+            knight->health-=25;
+            knight->score+=50;
+            board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
+        }
+        else{
+                while(knight->health >0){
+                    sleep(1);
+                    knight->health-=10;    
+                }
+                exit(0);
+        }
+    }
     return 0;
 }
