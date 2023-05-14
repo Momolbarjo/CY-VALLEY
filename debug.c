@@ -24,7 +24,7 @@ void print_board(int tab[SIZE][SIZE]) {
       } else if (tab[x][y] == 'R') {
         printf("\U0001FAA8 ");
       } else if (tab[x][y] == '!') {
-        printf("\U0001F9CC ");
+        printf("\U0001F9DF ");
       } else if (tab[x][y] == 'H') {
         printf("\U0001F3E1");
       } else if (tab[x][y] == 'X') {
