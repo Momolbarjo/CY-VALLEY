@@ -4,10 +4,8 @@
 int move_window(int tab[SIZE][SIZE], Player *player) {
   int score = 0;
 
-  int window_x = player->posPlayer.pos_x -
-                 9; // Coordonnée x du coin supérieur gauche de la fenêtre
-  int window_y = player->posPlayer.pos_y -
-                 9; // Coordonnée y du coin supérieur gauche de la fenêtre
+  int window_x = player->posPlayer.pos_x - 9; // Coordonnée x du coin supérieur gauche de la fenêtre
+  int window_y = player->posPlayer.pos_y - 9; // Coordonnée y du coin supérieur gauche de la fenêtre
 
   while (1) {
     // Afficher la fenêtre
@@ -54,10 +52,15 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
     }
 
     // Récupérer la touche frappée par le joueur
+    
     char input[2];
     while(getchar() != '\n'); // vide le tampon d'entrée
     fgets(input, 2, stdin);
     usleep(550000);
+    if (input[0] == 'i') {
+    interaction(tab,player);
+} else {
+    
     // Déplacer le joueur en conséquence
     switch (input[0]) {
     case 'z':
@@ -117,7 +120,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
         player->posPlayer.pos_y++;
         window_y++;
         player->score++; 
-
+        
       }
       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
         if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
@@ -127,9 +130,10 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             player->posPlayer.pos_y++;
             window_y++;
             player->score+=5; 
+            
         }
       }
-      //interaction(tab,player);
+      
       break;
       case 'e':
       ClearScreen();
@@ -169,5 +173,6 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       printf("Invalid input.\n");
       break;
     }
+  }
   }
 }
