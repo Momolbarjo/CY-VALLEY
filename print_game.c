@@ -57,6 +57,20 @@ void print_Overlay(Player *a) {
   printf("                                                            %s\n",a->itemsPlayer.item2);
   printf("                                                            %s\n",a->itemsPlayer.item3);
 
+  
+  if(a->health==0){
+    
+    printf(" _____          __  __ ______    ______      ________ _____   \n");
+    printf("/ ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\  \n");
+    printf("| |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) | \n");
+    printf("| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  /  \n");
+    printf("| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\  \n");
+    printf(" \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\ \n");
+    
+    sleep(2);
+    exit(0)
+      
+    }
 }
 
 void area_print(int tab[SIZE][SIZE], Player *player){
