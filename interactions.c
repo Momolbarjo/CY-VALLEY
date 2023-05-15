@@ -56,11 +56,7 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
         }
         else{
-                while(knight->health >0){
-                    sleep(1);
-                    knight->health-=10;    
-                }
-                exit(0);
+              knight->health-=50;
         }
     }
     return 0;
