@@ -2,7 +2,7 @@
 
 void main() {
 
-  open_website_part(3);
+  open_website_part(3);//Open an URL and here is a YouTube URL to play some music.
 
   int board[SIZE][SIZE];
   Player knight;
