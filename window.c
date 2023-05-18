@@ -1,14 +1,12 @@
 #include "header.h"
 
-
+//move_window display the game window that make sure to move following the movement of the player//
 int move_window(int tab[SIZE][SIZE], Player *player) {
-  int score = 0;
+while (1) {
+  int window_x = player->posPlayer.pos_x - 9; // x-coordinate of the top-left corner of the window
+  int window_y = player->posPlayer.pos_y -9; // y-coordinate of the top-left corner of the window
 
-  int window_x = player->posPlayer.pos_x - 9; // Coordonnée x du coin supérieur gauche de la fenêtre
-  int window_y = player->posPlayer.pos_y - 9; // Coordonnée y du coin supérieur gauche de la fenêtre
-
-  while (1) {
-    // Afficher la fenêtre
+    // display the window
     ClearScreen();
     print_Overlay(player);
     printf("\n");
@@ -38,30 +36,29 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
         printf("\U0001F9DF ");
       } else if (tab[x][y] == 'H') {
         printf("\U0001F3E1");
+      } else if (tab[x][y] == 'T') {
+        printf("\U0001F300");
       } else if (tab[x][y] == 'X') {
         printf("\U0001F30A");
-      } else {
+      }  else {
         printf("%c ", tab[x][y]);
       }
     }else {
-          printf("  "); // Afficher un espace pour les coordonnées en dehors de
-                        // la map
+          printf("  "); 
         }
       }
       printf("\n");
     }
-
-    // Récupérer la touche frappée par le joueur
-    
+  // Getting the key pressed by the player  
     char input[2];
-    while(getchar() != '\n'); // vide le tampon d'entrée
+    while(getchar() != '\n'); // Clear the input Buffer
     fgets(input, 2, stdin);
     usleep(550000);
     if (input[0] == 'i') {
     interaction(tab,player);
 } else {
     
-    // Déplacer le joueur en conséquence
+    // Move the window accordling and make the play stay at the center
     switch (input[0]) {
     case 'z':
        if (player->posPlayer.pos_x > 2 && (tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '.' || tab[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '@')) {
@@ -94,8 +91,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
             player->posPlayer.pos_y--;
             window_y--;
             player->score+=5;    
-        }
-        
+        }  
       }
       break;
     case 's':
@@ -106,7 +102,7 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       }
       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x+1 ][player->posPlayer.pos_y]=='R'){
       if(tab[player->posPlayer.pos_x+2][player->posPlayer.pos_y] == '.') {
-            // Push the box to the new position
+            // Push the box represented by the rock to the new position
             tab[player->posPlayer.pos_x+2][player->posPlayer.pos_y] = 'R';
             tab[player->posPlayer.pos_x+1][player->posPlayer.pos_y] = '.';
             player->posPlayer.pos_x++;
@@ -116,41 +112,37 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
       }
       break;
     case 'd':
-      if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
+        if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
         player->posPlayer.pos_y++;
         window_y++;
         player->score++; 
-        
       }
-      else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
+       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
         if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
-            // Push the box to the new position
+           // Push the box represented by the rock to the new position
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] = 'R';
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y+1] = '.';
             player->posPlayer.pos_y++;
             window_y++;
-            player->score+=5; 
-            
+            player->score+=5;            
         }
       }
       
-      break;
-      case 'e':
-      ClearScreen();
-      printf(
-          "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n");
-      char choice[2];
-    while(getchar() != '\n'); // vide le tampon d'entrée
+    break;
+        
+    case 'e':
+    ClearScreen();
+    printf( "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n"); //display a menu and wait the input of the player//
+    char choice[2];
+    while(getchar() != '\n'); // Clear the input Buffer
     fgets(choice, 2, stdin);
      
      switch(choice[0]){
      	
-     	case '1':
-     	
-     	break;
-     	
+     	  case '1':
+        break;
+         
        	case '2':
-       	
         ClearScreen();
         printf("Saving...\n");
         sleep(3);
@@ -159,7 +151,6 @@ int move_window(int tab[SIZE][SIZE], Player *player) {
         break;
         
         case '3':
-        
         ClearScreen();
         area_print(tab,player);
         sleep(3);
