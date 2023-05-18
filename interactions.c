@@ -83,29 +83,29 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '*'){
         if (strcmp(knight->itemsPlayer.item1, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item1, "\u2694");
+            strcpy(knight->itemsPlayer.item1, "\u2694");//the player get the sword at item1 position
         }
         else if (strcmp(knight->itemsPlayer.item2, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item2, "\u2694");
+            strcpy(knight->itemsPlayer.item2, "\u2694");//the player get the sword at item2 position
         }
         else if (strcmp(knight->itemsPlayer.item3, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item3, "\u2694");
+            strcpy(knight->itemsPlayer.item3, "\u2694");//the player get the sword at item3 position
         }
     }
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '#'){
         if (strcmp(knight->itemsPlayer.item1, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item1, "\U0001F6E1");
+            strcpy(knight->itemsPlayer.item1, "\U0001F6E1");//the player get the shield at item1 position
         }
         else if (strcmp(knight->itemsPlayer.item2, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item2, "\U0001F6E1");
+            strcpy(knight->itemsPlayer.item2, "\U0001F6E1");//the player get the shield at item2 position
         }
         else if (strcmp(knight->itemsPlayer.item3, ".") == 0){
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = '.';
-            strcpy(knight->itemsPlayer.item3, "\U0001F6E1");
+            strcpy(knight->itemsPlayer.item3, "\U0001F6E1");//the player get the shield at item3 position
         }
     }
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '~'){
@@ -116,17 +116,20 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
     }
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '!'){
         if(strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0){
-            knight->health-=30;
+            knight->health-=30;//if the player has the sword he will kill the ennemy but he will lose  30 hp
             knight->score+=50;
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
         }
         else if((strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0)&&(strcmp(knight->itemsPlayer.item1, "\U0001F6E1")==0 ||strcmp(knight->itemsPlayer.item2 , "\U0001F6E1")==0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1")==0)) {
-            knight->health-=15;
+            knight->health-=15;//if the player has the sword and the shield he will kill the ennemy but he will lose 15hp
             knight->score+=50;
             board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
         }
+        else if(strcmp(knight->itemsPlayer.item1, "\U0001F6E1")==0 ||strcmp(knight->itemsPlayer.item2 , "\U0001F6E1")==0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1")==0){
+            knight->health-=15;
+      }
         else{                
-              knight->health-=50;
+              knight->health-=50;//if the player dont have the sword and shield he will only lose 50hp
         }
     }
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == 'T'){
