@@ -37,11 +37,12 @@ void print_board(int tab[SIZE][SIZE]) {
   }
 }
 
+//Secure_boot will check that all the pointers are okay and that no issues associated to them are possible//
 void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs) {
 
     printf("Security checking...\n");
 
-    // Vérification des pointeurs de l'inventaire
+    
     if (!invent_player) {
         printf("Error while loading game due to invent_player struct pointer.\n");
         sleep(3);
@@ -58,7 +59,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
         }
     }
 
-    // Vérification des pointeurs du chevalier
+   
     if (!knight) {
         printf("Error while loading game due to knight struct pointer.\n");
         sleep(3);
@@ -75,7 +76,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
         }
     }
 
-    // Vérification des pointeurs de la position
+    
     if (!pos) {
         printf("Error while loading game due to pos pointer.\n");
         sleep(3);
@@ -92,7 +93,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
         }
     }
 
-    // Vérification des pointeurs des quêtes
+    
     if (!npcs) {
         printf("Error while loading game due to npc struct pointer.\n");
         sleep(3);
@@ -108,8 +109,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
             exit(0);
         }
     }
-
-    // Tout est en ordre
+    // Everything is okay
     sleep(3);
     printf("Everything is good.\n");
     sleep(2);
