@@ -1,5 +1,6 @@
 #include "header.h"
 
+//ClearScreen will clear the console and put the cursor at the beginnig of the screen  using ansi escape code/
 void ClearScreen() { printf("\033[H\033[J"); }
 
 void open_website_part(int i) {
@@ -10,16 +11,16 @@ void open_website_part(int i) {
     free(cmd);
 }
 
-
+//initialise_board will randomly place the items on the map
 void initialise_board(int board[SIZE][SIZE]) {
   int x, y;
-  // Initialiser le plateau avec des 'U' pour représenter la zone jouable
+  // Initialize the board with '.' to represent the playable area.
   for (x = 0; x < SIZE; x++) {
     for (y = 0; y < SIZE; y++) {
       board[x][y] = '.';
     }
   }
-  // Initialiser les bords avec des 'X'
+  // Initialize the borders with 'X'.
   for (y = 0; y < SIZE; y++) {
     board[0][y] = 'X';
     board[1][y] = 'X';
@@ -36,45 +37,42 @@ void initialise_board(int board[SIZE][SIZE]) {
 
 void randomizer(int plateau[SIZE][SIZE]) {
  
-  int nb_herbs, nb_houses, sword_x, sword_y, ennemy_x, ennemy_y, shield_x,
+  int nb_herbs, nb_houses,nb_teleports, sword_x, sword_y, ennemy_x, ennemy_y, shield_x,
       shield_y;
-  int random_x, random_y, npc1_x, npc1_y, npc2_x, npc2_y,nb_rocks,nb_woods,rock_x,rock_y,wood_x,wood_y;
+  int random_x, random_y, npc1_x, npc1_y, npc2_x,npc2_questpos_x,npc2_questpos_y ,npc2_y,nb_rocks,nb_woods;
 
-  srand(time(NULL));
-  nb_herbs = (SIZE - 4) * (SIZE - 4) /
-             4; // Calculer le nombre de cases d'herbe à générer
+  srand(time(NULL));//generating more unpredictable and varied random numbers.
+  nb_herbs = (SIZE - 4) * (SIZE - 4) /4; // Calculate the number of grass tiles to generate
   for (int i = 0; i < nb_herbs; i++) {
-    int herbs_x = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée x aléatoire entre 2 et SIZE-3
-    int herbs_y = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée y aléatoire entre 2 et SIZE-3
-    plateau[herbs_x][herbs_y] ='@'; // Remplacer par le code Unicode de l'emoji de plante
+    int herbs_x = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+    int herbs_y = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+    plateau[herbs_x][herbs_y] ='@'; //character for the herbs that will be displayed using Unicode emojis
   }
- 
   nb_rocks = 15;
   for (int i = 0; i < nb_rocks; i++) {
-    int rocks_x = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée x aléatoire entre 2 et SIZE-3
-    int rocks_y = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée y aléatoire entre 2 et SIZE-3
-    plateau[rocks_x][rocks_y] = 'R'; // Remplacer par le code Unicode de l'emoji de maison
+    int rocks_x = rand() % (SIZE - 4) +2;
+    int rocks_y = rand() % (SIZE - 4) +2;
+    plateau[rocks_x][rocks_y] = 'R'; 
   }
    nb_houses = 20;
   for (int i = 0; i < nb_houses; i++) {
-    int houses_x = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée x aléatoire entre 2 et SIZE-3
-    int houses_y = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée y aléatoire entre 2 et SIZE-3
-    plateau[houses_x][houses_y] = 'H'; // Remplacer par le code Unicode de l'emoji de maison
+    int houses_x = rand() % (SIZE - 4) +2;
+    int houses_y = rand() % (SIZE - 4) +2;
+    plateau[houses_x][houses_y] = 'H';
+  }
+   nb_woods=20;
+  for (int i = 0; i <nb_woods; i++) {
+    int woods_x = rand() % (SIZE - 4) +2;
+    int woods_y = rand() % (SIZE - 4) + 2;
+    plateau[woods_x][woods_y] = 'W';
   }
 
-   nb_woods =20;
-  for (int i = 0; i <nb_woods; i++) {
-    int woods_x = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée x aléatoire entre 2 et SIZE-3
-    int woods_y = rand() % (SIZE - 4) +
-            2; // Générer une coordonnée y aléatoire entre 2 et SIZE-3
-    plateau[woods_x][woods_y] = 'W'; // Remplacer par le code Unicode de l'emoji de maison
+  nb_teleports=12;
+
+for (int i = 0; i <nb_teleports; i++) {
+    int teleports_x = rand() % (SIZE - 4) +2;
+    int teleports_y = rand() % (SIZE - 4) + 2;
+    plateau[teleports_x][teleports_y] = 'T';
   }
 
   sword_x = rand() % (SIZE - 4) + 2;
@@ -96,14 +94,10 @@ void randomizer(int plateau[SIZE][SIZE]) {
   random_x=rand() % (SIZE - 4) + 2;
   random_y=rand() % (SIZE - 4) + 2;
   plateau[random_x][random_y] = '~';
-
-  for(int i=0;i<10;i++){  
-  ennemy_x =rand() % (SIZE - 4) + 2;
-  ennemy_y = rand() % (SIZE - 4) + 2;
   
+  for(int i=0;i<10;i++){  
+  ennemy_x = rand() % (SIZE - 4) + 2;
+  ennemy_y = rand() % (SIZE - 4) + 2;
   plateau[ennemy_x][ennemy_y] = '!';
-  }
-  if (plateau[ennemy_x - 1][ennemy_y] == 'H') { // Vérifier si la case précédente contient un emoji de maison
-    plateau[ennemy_x - 1][ennemy_y] = '.';
   }
 }
