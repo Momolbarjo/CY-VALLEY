@@ -31,6 +31,7 @@ typedef struct {
 
 typedef struct {
   int herbs;
+  int woods;
   char item1[15];
   char item2[15];
   char item3[15];
@@ -39,6 +40,8 @@ typedef struct {
 typedef struct {
   bool npc1;
   bool npc2;
+  bool npc1_done;
+  bool npc2_done;
 } Quests;
 
 
@@ -46,6 +49,7 @@ typedef struct {
   char name[70];
   int health;
   Inventory itemsPlayer;
+  int dimensions;
   Position posPlayer;
   int score;
   Quests npcs;
@@ -55,17 +59,23 @@ void ClearScreen();
 int print_game_instructions();
 void Introduction(Player* knight);
 void initialise_board(int board[SIZE][SIZE]);
-void randomizer(int plateau[SIZE][SIZE]);
+void randomizer(int board[SIZE][SIZE]);
 void open_website_part(int i); 
-void print_board(int tab[SIZE][SIZE]);
+void print_board(int board[SIZE][SIZE]);
 void print_Overlay(Player *a);
-void area_print(int tab[SIZE][SIZE], Player *player);
-int move_window(int tab[SIZE][SIZE], Player *player);
+void area_print(int board[SIZE][SIZE], Player *knight);
+int move_window(int board[SIZE][SIZE], Player *knight);
 void save_game(Player* data); 
 int show_menu();
 void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs);
 int interaction(int board[SIZE][SIZE],Player* knight);
+void teleporter_interaction(int board[SIZE][SIZE], Player *knight);
+void game_over();
+void gift_interaction(int board[SIZE][SIZE], Player *knight);
+void npc2_quest(Player* knight);
+void npc2_shop(Player* knight);
 
 #endif
+
 
 
