@@ -7,7 +7,8 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-
+#include <ncurses.h>
+#include <pthread.h>
 
 
 #define SIZE 100
@@ -38,10 +39,10 @@ typedef struct {
 } Inventory;
 
 typedef struct {
-  bool npc1;
-  bool npc2;
-  bool npc1_done;
-  bool npc2_done;
+  bool npc1_step1;
+  bool npc2_step1;
+  bool npc1_step2;
+  bool npc2_step2;
 } Quests;
 
 
@@ -83,6 +84,5 @@ void loadmap(int map[SIZE][SIZE], const char* fileName);
 void loadplayer(Player* player, const char* fileName);
 
 #endif
-
 
 
