@@ -35,70 +35,88 @@ void initialise_board(int board[SIZE][SIZE]) {
   }
 }
 
-void randomizer(int plateau[SIZE][SIZE]) {
+void randomizer(int map[SIZE][SIZE]) {
  
-  int nb_herbs, nb_houses,nb_teleports, sword_x, sword_y, ennemy_x, ennemy_y, shield_x,
-      shield_y;
-  int random_x, random_y, npc1_x, npc1_y, npc2_x,npc2_questpos_x,npc2_questpos_y ,npc2_y,nb_rocks,nb_woods;
+  int  nb_herbs,sword_x, sword_y, ennemy_x, ennemy_y, shield_x,shield_y,rocks_x,rocks_y,houses_x,houses_y;
+  int woods_x,woods_y,random_x, random_y,teleports_x,teleports_y,npc1_x, npc1_y, npc2_x,npc2_y;
 
   srand(time(NULL));//generating more unpredictable and varied random numbers.
   nb_herbs = (SIZE - 4) * (SIZE - 4) /4; // Calculate the number of grass tiles to generate
   for (int i = 0; i < nb_herbs; i++) {
-       int herbs_x = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
-       int herbs_y = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
-       plateau[herbs_x][herbs_y] ='@'; //character for the herbs that will be displayed using Unicode emojis
-  }
-  nb_rocks = 15;
-  for (int i = 0; i < nb_rocks; i++) {
-       int rocks_x = rand() % (SIZE - 4) +2;
-       int rocks_y = rand() % (SIZE - 4) +2;
-       plateau[rocks_x][rocks_y] = 'R'; 
-  }
-   nb_houses = 20;
-  for (int i = 0; i < nb_houses; i++) {
-       int houses_x = rand() % (SIZE - 4) +2;
-       int houses_y = rand() % (SIZE - 4) +2;
-       plateau[houses_x][houses_y] = 'H';
-  }
-   nb_woods=20;
-  for (int i = 0; i <nb_woods; i++) {
-       int woods_x = rand() % (SIZE - 4) +2;
-       int woods_y = rand() % (SIZE - 4) + 2;
-       plateau[woods_x][woods_y] = 'W';
+      int herbs_x = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+      int herbs_y = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+      map[herbs_x][herbs_y] ='@'; //character for the herbs that will be displayed using Unicode emojis
   }
 
-  nb_teleports=12;
-
-for (int i = 0; i <nb_teleports; i++) {
-     int teleports_x = rand() % (SIZE - 4) +2;
-     int teleports_y = rand() % (SIZE - 4) + 2;
-     plateau[teleports_x][teleports_y] = 'T';
+  for (int i = 0; i < 15; i++) {
+    do{
+          rocks_x = rand() % (SIZE - 5) +3;
+          rocks_y = rand() % (SIZE - 5) +3;
+    }while(map[rocks_x][rocks_y] != '.' && map[rocks_x][rocks_y] != '@' );
+      map[rocks_x][rocks_y] = 'R'; 
+  }
+ 
+  for (int i = 0; i < 12; i++) {
+    do{
+          houses_x = rand() % (SIZE - 5) +3;
+          houses_y = rand() % (SIZE - 5) +3;
+    }while(map[houses_x][houses_y] != '.' && map[houses_x][houses_y] != '@' );
+      map[houses_x][houses_y] = 'H';
   }
 
-  sword_x = rand() % (SIZE - 4) + 2;
-  sword_y = rand() % (SIZE - 4) + 2;
-  plateau[sword_x][sword_y] = '*';
+ for (int i = 0; i < 20; i++) {
+    do{
+          woods_x = rand() % (SIZE - 5) +3;
+          woods_y = rand() % (SIZE - 5) +3;
+    }while(map[woods_x][woods_y] != '.' && map[woods_x][woods_y] != '@' );
+      map[woods_x][woods_y] = 'W';
+  }
 
-  shield_x=rand() % (SIZE - 4) + 2;
-  shield_y=rand() % (SIZE - 4) + 2;
-  plateau[shield_x][shield_y] = '#';
+for (int i = 0; i < 12; i++) {
+    do{
+          teleports_x = rand() % (SIZE - 5) +3;
+          teleports_y = rand() % (SIZE - 5) +3;
+    }while(map[teleports_x][teleports_y] != '.' && map[teleports_x][teleports_y] != '@' );
+      map[teleports_x][teleports_y] = 'T';
+  }
 
-  npc1_x=rand() % (SIZE - 4) + 2;
-  npc1_y=rand() % (SIZE - 4) + 2;
-  plateau[npc1_x][npc1_y] = '=';
+ do {
+        sword_x = rand() % (SIZE - 5) + 3;
+        sword_y = rand() % (SIZE - 5) + 3;
+  } while (map[sword_x][sword_y] != '.' && map[sword_x][sword_y] != '@' );
+  map[sword_x][sword_y] = '*';
+
+ do {
+  shield_x=rand() % (SIZE - 5) + 3;
+  shield_y=rand() % (SIZE - 5) + 3;
+  } while (map[shield_x][shield_y] != '.' && map[shield_x][shield_y] != '@' );
+  map[shield_x][shield_y] = '#';
+
+ do {
+        npc1_x=rand() % (SIZE - 20) + 10;
+        npc1_y=rand() % (SIZE - 20) + 10;
+  } while (map[npc1_x][npc1_y] != '.' && map[npc1_x][npc1_y] != '@' );
+  map[npc1_x][npc1_y] = '=';
   
-  npc2_x=rand() % (SIZE - 4) + 2;
-  npc2_y=rand() % (SIZE - 4) + 2;
-  plateau[npc2_x][npc2_y] = '^';
+ do {
+        npc2_x=rand() % (SIZE - 20) + 10;
+        npc2_y=rand() % (SIZE - 20) + 10;
+   } while (map[npc2_x][npc2_y] != '.' && map[npc2_x][npc2_y] != '@' );
+  map[npc2_x][npc2_y] = '^';
 
-  random_x=rand() % (SIZE - 4) + 2;
-  random_y=rand() % (SIZE - 4) + 2;
-  plateau[random_x][random_y] = '~';
+ do {
+        random_x = rand() % (SIZE - 5) + 3;
+        random_y = rand() % (SIZE - 5) + 3;
+    } while (map[random_x][random_y] != '.' && map[random_x][random_y] != '@' );
+  map[random_x][random_y] = '~';
   
-  for(int i=0;i<10;i++){  
-      ennemy_x = rand() % (SIZE - 4) + 2;
-      ennemy_y = rand() % (SIZE - 4) + 2;
-      plateau[ennemy_x][ennemy_y] = '!';
-  }
+ for (int i = 0; i < 10; i++) {
+    do {
+        ennemy_x = rand() % (SIZE - 5) + 3;
+        ennemy_y = rand() % (SIZE - 5) + 3;
+    } while (map[ennemy_x][ennemy_y] != '.' && map[ennemy_x][ennemy_y] != '@' ); // Répéter jusqu'à obtenir des coordonnées valides
+
+    map[ennemy_x][ennemy_y] = '!';
+}
  
 }
