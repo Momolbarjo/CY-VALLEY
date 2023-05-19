@@ -7,7 +7,6 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <ncurses.h>
 
 
 
@@ -21,6 +20,7 @@
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_WHITE "\x1b[37m"
 #define FORMAT_STRING "START https://www.youtube.com/watch?v=zRGCzCn5azI/%d" 
+
 
 typedef struct {
 
@@ -52,6 +52,7 @@ typedef struct {
   int dimensions;
   Position posPlayer;
   int score;
+  int quest_seconds;
   Quests npcs;
 } Player;
 
@@ -74,6 +75,12 @@ void game_over();
 void gift_interaction(int board[SIZE][SIZE], Player *knight);
 void npc2_quest(Player* knight);
 void npc2_shop(Player* knight);
+void savegame(const int map[SIZE][SIZE], const Player* player, const char* playerName, const char* mapName);
+void savemap(const int map[SIZE][SIZE], const char* fileName);
+void saveplayer(const Player* player, const char* fileName);
+void loadgame(int map[SIZE][SIZE], Player* player, const char* playerName, const char* mapName);
+void loadmap(int map[SIZE][SIZE], const char* fileName);
+void loadplayer(Player* player, const char* fileName);
 
 #endif
 
