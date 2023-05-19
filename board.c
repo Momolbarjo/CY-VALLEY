@@ -87,8 +87,8 @@ for (int i = 0; i < 12; i++) {
   map[sword_x][sword_y] = '*';
 
  do {
-  shield_x=rand() % (SIZE - 5) + 3;
-  shield_y=rand() % (SIZE - 5) + 3;
+        shield_x=rand() % (SIZE - 5) + 3;
+        shield_y=rand() % (SIZE - 5) + 3;
   } while (map[shield_x][shield_y] != '.' && map[shield_x][shield_y] != '@' );
   map[shield_x][shield_y] = '#';
 
