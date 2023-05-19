@@ -3,16 +3,17 @@
 //move_window display the game window that make sure to move following the movement of the player//
 int move_window(int tab[SIZE][SIZE], Player *player) {
 while (1) {
-  int window_x = player->posPlayer.pos_x - 9; // x-coordinate of the top-left corner of the window
-  int window_y = player->posPlayer.pos_y -9; // y-coordinate of the top-left corner of the window
+  int window_x = player->posPlayer.pos_x - 15; // x-coordinate of the top-left corner of the window
+  int window_y = player->posPlayer.pos_y -25; // y-coordinate of the top-left corner of the window
 
+  
     // display the window
     ClearScreen();
     print_Overlay(player);
     printf("\n");
     printf("\n");
-    for (int x = window_x; x < window_x + 20; x++) {
-      for (int y = window_y; y < window_y + 20; y++) {
+    for (int x = window_x; x < window_x + 30; x++) {
+      for (int y = window_y; y < window_y + 50; y++) {
         if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
           if (x == player->posPlayer.pos_x && y == player->posPlayer.pos_y) {
             printf(ANSI_COLOR_YELLOW "P " ANSI_COLOR_RESET);
@@ -49,6 +50,7 @@ while (1) {
       }
       printf("\n");
     }
+   
   // Getting the key pressed by the player  
     char input[2];
     while(getchar() != '\n'); // Clear the input Buffer
@@ -91,7 +93,8 @@ while (1) {
             player->posPlayer.pos_y--;
             window_y--;
             player->score+=5;    
-        }  
+        }
+        
       }
       break;
     case 's':
@@ -112,45 +115,49 @@ while (1) {
       }
       break;
     case 'd':
-        if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
+      if (player->posPlayer.pos_y < SIZE - 3 && (tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='.' || tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='@')) {
         player->posPlayer.pos_y++;
         window_y++;
         player->score++; 
+        
       }
-       else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
+      else if( player->posPlayer.pos_x < SIZE - 3 &&  tab[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
         if(tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
            // Push the box represented by the rock to the new position
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y+2] = 'R';
             tab[player->posPlayer.pos_x][player->posPlayer.pos_y+1] = '.';
             player->posPlayer.pos_y++;
             window_y++;
-            player->score+=5;            
+            player->score+=5; 
+            
         }
       }
       
-    break;
-        
-    case 'e':
-    ClearScreen();
-    printf( "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n"); //display a menu and wait the input of the player//
-    char choice[2];
+      break;
+      case 'e':
+      ClearScreen();
+      printf(
+          "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n"); //display a menu and wait the input of the player//
+      char choice[2];
     while(getchar() != '\n'); // Clear the input Buffer
     fgets(choice, 2, stdin);
      
      switch(choice[0]){
      	
      	  case '1':
-        break;
+     	  break;
          
        	case '2':
         ClearScreen();
         printf("Saving...\n");
-        sleep(3);
+        sleep(1);
+        sauvegarderPartie(tab, player, "partie.bin", "carte.bin");
         printf("Game saved!\n");
         sleep(2);
         break;
         
         case '3':
+        
         ClearScreen();
         area_print(tab,player);
         sleep(3);
@@ -166,4 +173,5 @@ while (1) {
     }
   }
   }
+  return 0;
 }
