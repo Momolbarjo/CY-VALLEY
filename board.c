@@ -17,7 +17,7 @@ void initialise_board(int board[SIZE][SIZE]) {
   // Initialize the board with '.' to represent the playable area.
   for (x = 0; x < SIZE; x++) {
     for (y = 0; y < SIZE; y++) {
-      board[x][y] = '.';
+        board[x][y] = '.';
     }
   }
   // Initialize the borders with 'X'.
@@ -44,35 +44,35 @@ void randomizer(int plateau[SIZE][SIZE]) {
   srand(time(NULL));//generating more unpredictable and varied random numbers.
   nb_herbs = (SIZE - 4) * (SIZE - 4) /4; // Calculate the number of grass tiles to generate
   for (int i = 0; i < nb_herbs; i++) {
-    int herbs_x = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
-    int herbs_y = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
-    plateau[herbs_x][herbs_y] ='@'; //character for the herbs that will be displayed using Unicode emojis
+       int herbs_x = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+       int herbs_y = rand() % (SIZE - 4) +2; // Generate a random x-coordinate between 2 and SIZE-3.
+       plateau[herbs_x][herbs_y] ='@'; //character for the herbs that will be displayed using Unicode emojis
   }
   nb_rocks = 15;
   for (int i = 0; i < nb_rocks; i++) {
-    int rocks_x = rand() % (SIZE - 4) +2;
-    int rocks_y = rand() % (SIZE - 4) +2;
-    plateau[rocks_x][rocks_y] = 'R'; 
+       int rocks_x = rand() % (SIZE - 4) +2;
+       int rocks_y = rand() % (SIZE - 4) +2;
+       plateau[rocks_x][rocks_y] = 'R'; 
   }
    nb_houses = 20;
   for (int i = 0; i < nb_houses; i++) {
-    int houses_x = rand() % (SIZE - 4) +2;
-    int houses_y = rand() % (SIZE - 4) +2;
-    plateau[houses_x][houses_y] = 'H';
+       int houses_x = rand() % (SIZE - 4) +2;
+       int houses_y = rand() % (SIZE - 4) +2;
+       plateau[houses_x][houses_y] = 'H';
   }
    nb_woods=20;
   for (int i = 0; i <nb_woods; i++) {
-    int woods_x = rand() % (SIZE - 4) +2;
-    int woods_y = rand() % (SIZE - 4) + 2;
-    plateau[woods_x][woods_y] = 'W';
+       int woods_x = rand() % (SIZE - 4) +2;
+       int woods_y = rand() % (SIZE - 4) + 2;
+       plateau[woods_x][woods_y] = 'W';
   }
 
   nb_teleports=12;
 
 for (int i = 0; i <nb_teleports; i++) {
-    int teleports_x = rand() % (SIZE - 4) +2;
-    int teleports_y = rand() % (SIZE - 4) + 2;
-    plateau[teleports_x][teleports_y] = 'T';
+     int teleports_x = rand() % (SIZE - 4) +2;
+     int teleports_y = rand() % (SIZE - 4) + 2;
+     plateau[teleports_x][teleports_y] = 'T';
   }
 
   sword_x = rand() % (SIZE - 4) + 2;
@@ -96,8 +96,9 @@ for (int i = 0; i <nb_teleports; i++) {
   plateau[random_x][random_y] = '~';
   
   for(int i=0;i<10;i++){  
-  ennemy_x = rand() % (SIZE - 4) + 2;
-  ennemy_y = rand() % (SIZE - 4) + 2;
-  plateau[ennemy_x][ennemy_y] = '!';
+      ennemy_x = rand() % (SIZE - 4) + 2;
+      ennemy_y = rand() % (SIZE - 4) + 2;
+      plateau[ennemy_x][ennemy_y] = '!';
   }
+ 
 }
