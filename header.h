@@ -60,7 +60,7 @@ void ClearScreen();
 int print_game_instructions();
 void Introduction(Player* knight);
 void initialise_board(int board[SIZE][SIZE]);
-void randomizer(int board[SIZE][SIZE]);
+void randomizer(int map[SIZE][SIZE]);
 void open_website_part(int i); 
 void print_board(int board[SIZE][SIZE]);
 void print_Overlay(Player *a);
