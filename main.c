@@ -3,7 +3,7 @@
 int main() {
 
   open_website_part(3); // Ouverture d'une URL
-  int board[SIZE][SIZE];
+  int map[SIZE][SIZE];
   Player knight;
   Position player_position;
   Inventory player_inventory;
@@ -15,9 +15,9 @@ int main() {
     if (choice == 1) {
       ClearScreen();
       Introduction(&knight);
-      initialise_board(board);
-      randomizer(board);
-      move_window(board, &knight);
+      initialise_board(map);
+      randomizer(map);
+      move_window(map, &knight);
     } else if (choice == 2) {
       ClearScreen();
       print_game_instructions();
@@ -25,8 +25,8 @@ int main() {
     }
     else if (choice == 3) {
       ClearScreen();
-      chargerPartie(board,&knight, "partie.bin", "carte.bin");
-      move_window(board, &knight);
+      loadgame(map,&knight, "game.bin", "map.bin");
+      move_window(map, &knight);
     }
   }
   return 0;
