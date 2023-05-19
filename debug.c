@@ -1,36 +1,34 @@
-#include "header.h"
+void print_board(int map[SIZE][SIZE]) {
+    fflush(stdout);
+    ClearScreen();
+    int x, y;
 
-void print_board(int tab[SIZE][SIZE]) {
-  fflush(stdout);
-  ClearScreen();
-  int x, y;
-
-  for (x = 0; x < SIZE; x++) {
-    for (y = 0; y < SIZE; y++) {
-      if (tab[x][y] == '*') {
-        printf("\u2694 ");
-      } else if (tab[x][y] == '@') {
-        printf("\U0001F33F");
-      } else if (tab[x][y] == '=') {
-        printf( "\U0001F64B"); // Ajout d'un espace après l'emoji
-      } else if (tab[x][y] == '^') {
-        printf("\U0001F9D9");
-      } else if (tab[x][y] == '#') {
-        printf("\U0001F6E1 ");
-      } else if (tab[x][y] == '~') {
-        printf("\U0001F381");
-      } else if (tab[x][y] == 'W') {
-        printf("\U0001FAB5 ");
-      } else if (tab[x][y] == 'R') {
-        printf("\U0001FAA8 ");
-      } else if (tab[x][y] == '!') {
-        printf("\U0001F9DF ");
-      } else if (tab[x][y] == 'H') {
-        printf("\U0001F3E1");
-      } else if (tab[x][y] == 'X') {
-        printf("\U0001F30A");
-      } else {
-        printf("%c ", tab[x][y]);
+    for (x = 0; x < SIZE; x++) {
+      for (y = 0; y < SIZE; y++) {
+        if (map[x][y] == '*') {
+          printf("\u2694 ");
+          }else if (map[x][y] == '@') {
+            printf("\U0001F33F");
+          }else if (map[x][y] == '=') {
+            printf( "\U0001F64B"); // Ajout d'un espace après l'emoji
+          }else if (map[x][y] == '^') {
+            printf("\U0001F9D9");
+          }else if (map[x][y] == '#') {
+            printf("\U0001F6E1 ");
+          }else if (map[x][y] == '~') {
+            printf("\U0001F381");
+          }else if (map[x][y] == 'W') {
+            printf("\U0001FAB5 ");
+          }else if (map[x][y] == 'R') {
+            printf("\U0001FAA8 ");
+          }else if (map[x][y] == '!') {
+            printf("\U0001F9DF ");
+          }else if (map[x][y] == 'H') {
+            printf("\U0001F3E1");
+          }else if (map[x][y] == 'X') {
+            printf("\U0001F30A");
+          }else{
+            printf("%c ", map[x][y]);
       }
     }
     printf("\n");
@@ -109,6 +107,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
             exit(0);
         }
     }
+
     // Everything is okay
     sleep(3);
     printf("Everything is good.\n");
