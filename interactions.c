@@ -17,17 +17,37 @@ void teleporter_interaction(int map[SIZE][SIZE], Player *player) {
 
 //Npc2 quest which consist to take 3 teleporter//
 void npc2_quest(Player* knight) {
+   int secret_posx=knight->posPlayer.pos_x-3;
+   int secret_posy=knight->posPlayer.pos_y+5;
+
    setbuf(stdout, NULL);//disable the buffer in order to force display
-   if(knight->dimensions!=3 && knight->npcs.npc2==false){
-        printf("Hello... brave knight,when you will  cross 3 dimensions, i will help you...");
-        sleep(1);
+   //step 1:
+   if(knight->dimensions!=3 && knight->npcs.npc2_step1==false){
+        printf("Hello... brave knight,when you will  cross 3 dimensions,come back...");
+        sleep(2);
+        fflush(stdout);
+   }//step1 done:
+   else if (knight->npcs.npc2_step1==false && knight->dimensions==3){
+        printf("Well played...");
+        knight->npcs.npc2_step1=true;
+        sleep(2);//step 2:
         fflush(stdout);
    }
-   else{
-        printf("Well played...");
-        knight->npcs.npc2=true;
-        sleep(1);
+
+   if( knight->npcs.npc2_step1==true && knight->npcs.npc2_step2==false){
+        printf("\u2192 + \u2192 + \u2192 + \u2192 + \u2191 + \u2191 +\u2191 ...");
+        sleep(2);
+        if(knight->posPlayer.pos_x==secret_posx && knight->posPlayer.pos_y==secret_posy){
+            knight->npcs.npc2_step2=true;
+            sleep(1);
+        }
+
         fflush(stdout);  
+   }//step2 done:
+   else if (knight->npcs.npc2_step2==true){
+        printf("Impressive...");
+        sleep(2);
+        fflush(stdout);
    }
 }
 
@@ -141,8 +161,10 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
         }
         else{
                 
-              knight->health-=50;     
+              knight->health-=50;
+        
         }
+
     }
 
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == 'T'){
@@ -158,6 +180,7 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '^'){
       npc2_quest(knight);
     }
+
 
     return 0;
 }
