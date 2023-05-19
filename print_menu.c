@@ -34,7 +34,7 @@ int print_game_instructions() {
 
 int show_menu() {
   while (1) {
-    printf("\x1b[31m");
+   printf("\x1b[31m");
     printf("   _____          __      __   _ _                       _    .  ,   .           .  \n");
     printf("  / ____|         \\ \\    / /  | | |                  *  / \\_ *  / \\_      _  *        *   /\\'__        *\n");
     printf(" | |    _   _ _____\\ \\  / /_ _| | | ___ _   _          /    \\  /    \\,   ((        .    _/  /  \\  *'\n");
@@ -79,4 +79,3 @@ int show_menu() {
     }
   }
 }
-
