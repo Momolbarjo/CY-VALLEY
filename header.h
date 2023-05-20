@@ -11,6 +11,7 @@
 #include <pthread.h>
 
 
+
 #define SIZE 100
 #define ANSI_COLOR_RESET "\x1b[0m"
 #define ANSI_COLOR_RED "\x1b[31m"
@@ -24,10 +25,8 @@
 
 
 typedef struct {
-
   int pos_x;
   int pos_y;
-
 } Position;
 
 typedef struct {
@@ -43,6 +42,7 @@ typedef struct {
   bool npc2_step1;
   bool npc1_step2;
   bool npc2_step2;
+  bool timer_start;
 } Quests;
 
 
@@ -73,8 +73,8 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
 int interaction(int board[SIZE][SIZE],Player* knight);
 void teleporter_interaction(int board[SIZE][SIZE], Player *knight);
 void game_over();
-void gift_interaction(int board[SIZE][SIZE], Player *knight);
-void npc2_quest(Player* knight);
+void gift_interaction(Player *knight);
+void npc2_quest(int map[SIZE][SIZE], Player* knight);
 void npc2_shop(Player* knight);
 void savegame(const int map[SIZE][SIZE], const Player* player, const char* playerName, const char* mapName);
 void savemap(const int map[SIZE][SIZE], const char* fileName);
@@ -82,6 +82,7 @@ void saveplayer(const Player* player, const char* fileName);
 void loadgame(int map[SIZE][SIZE], Player* player, const char* playerName, const char* mapName);
 void loadmap(int map[SIZE][SIZE], const char* fileName);
 void loadplayer(Player* player, const char* fileName);
+void* timer_thread(void* arg);
 
 #endif
 
