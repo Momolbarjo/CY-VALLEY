@@ -1,3 +1,5 @@
+#include "header.h"
+
 void print_board(int map[SIZE][SIZE]) {
     fflush(stdout);
     ClearScreen();
@@ -98,7 +100,7 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
         exit(0);
     }
     char* npcs_ptr_names[] = {"npc1", "npc2"};
-    void* npcs_ptrs[] = {&(npcs->npc1), &(npcs->npc2)};
+    void* npcs_ptrs[] = {&(npcs->npc1_step1), &(npcs->npc2_step1)};
     int npcs_ptr_count = sizeof(npcs_ptrs) / sizeof(void*);
     for (int i = 0; i < npcs_ptr_count; i++) {
         if (npcs_ptrs[i] == NULL) {
