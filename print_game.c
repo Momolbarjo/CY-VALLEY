@@ -21,11 +21,12 @@ void Introduction(Player* knight){
     knight->score=0;
     knight->health = 100;
     knight->dimensions=0;
-    knight->npcs.npc1=false;
-    knight->npcs.npc2=false;
-    knight->npcs.npc1_done=false;
-    knight->npcs.npc1_done=true;
-    knight->quest_seconds=60;
+    knight->quest_seconds=120;
+    knight->npcs.npc1_step1=false;
+    knight->npcs.npc2_step1=false;
+    knight->npcs.npc1_step2=false;
+    knight->npcs.npc2_step2=false;
+    knight->npcs.timer_start=false;
     strcpy(knight->itemsPlayer.item1, ".");
     strcpy(knight->itemsPlayer.item2, ".");
     strcpy(knight->itemsPlayer.item3, ".");
@@ -34,13 +35,13 @@ void Introduction(Player* knight){
     knight->posPlayer.pos_y = SIZE / 2;
 
     printf("Welcome brave knight...We need you to save our kingdom...But, what's your name ?\n");
-    scanf("%s", knight->name);
-    while(strlen(knight->name)>12){
+      scanf("%s", knight->name);
+      while(strlen(knight->name)>12){
         printf("Please enter a correct name\n");
         scanf("%s", knight->name);
       }
-    printf("%s, save us...please\n", knight->name);
-    sleep(3);
+      printf("%s, save us...please\n", knight->name);
+      sleep(3);
 
 
 }
@@ -50,7 +51,7 @@ void print_Overlay(Player *knight) {
   
   int Health_MAX = 100;
   if(knight->health>100){
-        knight->health=100;
+    knight->health=100;
 }
   const int Long = 20; // total length of the health bar
   int longHealth=0; // Length of the health bar based on current health points
@@ -58,10 +59,10 @@ void print_Overlay(Player *knight) {
   printf("\n                                                            Health : [");
   longHealth = (knight->health * Long) / Health_MAX; // Updating the length of the health bar
   for (int i = 0; i < Long; i++) {
-        if (i < longHealth) {
-            printf(ANSI_COLOR_RED "|" ANSI_COLOR_RESET); // health symbol
-  }     else {
-            printf(" "); // empty space
+    if (i < longHealth) {
+      printf(ANSI_COLOR_RED "|" ANSI_COLOR_RESET); // health symbol
+  } else {
+      printf(" "); // empty space
   }
 }
   printf("]\n");
@@ -85,7 +86,7 @@ void print_Overlay(Player *knight) {
 }
 
 //area_print display for a few second an 35*35 area of the map//
-void area_print(int tab[SIZE][SIZE], Player *player){
+void area_print(int map[SIZE][SIZE], Player *player){
 
     int window_x = player->posPlayer.pos_x -18; // x-coordinate of the top-left corner of the window
     int window_y = player->posPlayer.pos_y -18; // y-coordinate of the top-left corner of the window
@@ -98,39 +99,38 @@ void area_print(int tab[SIZE][SIZE], Player *player){
         if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
           if (x == player->posPlayer.pos_x && y == player->posPlayer.pos_y) {
             printf(ANSI_COLOR_YELLOW "P " ANSI_COLOR_RESET);
-          } else if (tab[x][y] == '*') {
-                printf("\u2694 ");
-          } else if (tab[x][y] == '@') {
-                 printf("\U0001F33F");
-          } else if (tab[x][y] == '=') {
-                 printf( "\U0001F64B"); 
-          } else if (tab[x][y] == '^') {
-                 printf("\U0001F9D9");
-          } else if (tab[x][y] == '#') {
-                printf("\U0001F6E1 ");
-          } else if (tab[x][y] == '~') {
-                printf("\U0001F381");
-          } else if (tab[x][y] == 'W') {
-                printf("\U0001FAB5 ");
-          } else if (tab[x][y] == 'R') {
-                printf("\U0001FAA8 ");
-          } else if (tab[x][y] == '!') {
-                printf("\U0001F9DF ");
-          } else if (tab[x][y] == 'H') {
-                printf("\U0001F3E1");
-          } else if (tab[x][y] == 'X') {
-                printf("\U0001F30A");
-          } else if (tab[x][y] == 'T') {
-                printf("\U0001F300");
-          } else {
-                printf("%c ", tab[x][y]);
-          }
+          } else if (map[x][y] == '*') {
+        printf("\u2694 ");
+      } else if (map[x][y] == '@') {
+        printf("\U0001F33F");
+      } else if (map[x][y] == '=') {
+        printf( "\U0001F64B"); 
+      } else if (map[x][y] == '^') {
+        printf("\U0001F9D9");
+      } else if (map[x][y] == '#') {
+        printf("\U0001F6E1 ");
+      } else if (map[x][y] == '~') {
+        printf("\U0001F381");
+      } else if (map[x][y] == 'W') {
+        printf("\U0001FAB5 ");
+      } else if (map[x][y] == 'R') {
+        printf("\U0001FAA8 ");
+      } else if (map[x][y] == '!') {
+        printf("\U0001F9DF ");
+      } else if (map[x][y] == 'H') {
+        printf("\U0001F3E1");
+      } else if (map[x][y] == 'X') {
+        printf("\U0001F30A");
+      } else if (map[x][y] == 'T') {
+        printf("\U0001F300");
+      } else {
+        printf("%c ", map[x][y]);
+      }
     }else {
           printf("  "); 
         }
       }
       printf("\n");
     }
-
 }
 
