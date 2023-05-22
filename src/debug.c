@@ -1,5 +1,6 @@
 #include "header.h"
 
+//print_board is only used to check if everything was okay for the emoji printing//
 void print_board(int map[SIZE][SIZE]) {
     fflush(stdout);
     ClearScreen();
