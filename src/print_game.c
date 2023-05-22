@@ -21,7 +21,7 @@ void Introduction(Player* knight){
     knight->score=0;
     knight->health = 100;
     knight->dimensions=0;
-    knight->quest_seconds=120;
+    knight->quest_seconds=150;
     knight->npcs.npc1_step1=false;
     knight->npcs.npc2_step1=false;
     knight->npcs.npc1_step2=false;
@@ -80,8 +80,12 @@ void print_Overlay(Player *knight) {
   printf("                                                           %s\n",knight->itemsPlayer.item3);
  
     
-  if(knight->health==0){   
-      game_over();    
+  if(knight->health==0){ 
+    ClearScreen();
+    printf("The ennemy killed you...");
+    fflush(stdout);
+    sleep(1);  
+    game_over();    
     }
 }
 
@@ -123,6 +127,8 @@ void area_print(int map[SIZE][SIZE], Player *player){
         printf("\U0001F30A");
       } else if (map[x][y] == 'T') {
         printf("\U0001F300");
+      } else if (map[x][y] == 'B') {
+        printf("\U0001F3DA");
       } else {
         printf("%c ", map[x][y]);
       }
@@ -132,5 +138,5 @@ void area_print(int map[SIZE][SIZE], Player *player){
       }
       printf("\n");
     }
-
 }
+
