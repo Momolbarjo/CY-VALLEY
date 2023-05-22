@@ -12,6 +12,8 @@ while (1) {
     print_Overlay(player);
     printf("\n");
     printf("\n");
+    timer(player);
+    printf("\n");
     for (int x = window_x; x < window_x + 30; x++) {
       for (int y = window_y; y < window_y + 50; y++) {
         if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
@@ -39,6 +41,8 @@ while (1) {
         printf("\U0001F3E1");
       } else if (map[x][y] == 'T') {
         printf("\U0001F300");
+      } else if (map[x][y] == 'B') {
+        printf("\U0001F3DA");
       } else if (map[x][y] == 'X') {
         printf("\U0001F30A");
       } else if (map[x][y] == '%') {
@@ -175,7 +179,7 @@ while (1) {
       printf("Invalid input.\n");
       break;
     }
-  }
+   }
   }
   return 0;
 }
