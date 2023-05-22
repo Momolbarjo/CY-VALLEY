@@ -50,6 +50,7 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
         fflush(stdout);  
    }//step2 done:
    else if (knight->npcs.npc2_step2==true){
+        knight->npcs.timer_start=false;
         printf("Impressive...");
         sleep(2);
         npc2_shop(knight);
@@ -293,8 +294,9 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
       npc1_quest(board,knight);
     }
 
-    
-
+    if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == 'H' &&(strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0)){
+      board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] = 'B';
+    }
 
     return 0;
 }
