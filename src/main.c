@@ -21,7 +21,6 @@ int main() {
     } else if (choice == 2) {
       ClearScreen();
       print_game_instructions();
-
     }
     else if (choice == 3) {
       ClearScreen();
