@@ -90,30 +90,28 @@ void npc2_shop(Player* knight){
 
     while (shop) {
         printf("Welcome to my shop, what do you want?\n");
-        printf("1. buy items\n");
-        printf("2. leave the shop\n");
+        printf("a. buy items\n");
+        printf("a. leave the shop\n");
         
 
-        int choice;
-        scanf("%d", &choice);
+        char choice=getchar();
         ClearScreen();
 
         switch (choice) {
         
-            case 1:
+            case 'a':
                 printf("what do you want to buy?\n");
-                printf("1. potion of 20  health points (cost : 5\U0001F33F )\n");
-                printf("2. +200 score points (cost : 5\U0001F33F  + 3\U0001FAB5)\n");
-                printf("3. END_GAME (cost : 2500 points )\n");
+                printf("a. potion of 20  health points (cost : 5\U0001F33F )\n");
+                printf("b. +200 score points (cost : 5\U0001F33F  + 3\U0001FAB5)\n");
+                printf("c. END_GAME (cost : 2500 points )\n");
                 
 
 
-                int buyItem;
-                scanf("%d", &buyItem);
+                char buyItem=getchar();
                 ClearScreen();
 
                 switch (buyItem) {
-                    case 1:
+                    case 'a':
                         if (knight->itemsPlayer.herbs >= 5) {
                             knight->itemsPlayer.herbs -= 5;
                             knight->health+=20;
@@ -123,7 +121,7 @@ void npc2_shop(Player* knight){
                         }
                         break;
 
-                    case 2:
+                    case 'b':
                         if (knight->itemsPlayer.herbs >= 5 && knight->itemsPlayer.woods >= 3 ) {
                             knight->itemsPlayer.herbs -= 5;
                             knight->itemsPlayer.woods -= 3;
@@ -134,7 +132,7 @@ void npc2_shop(Player* knight){
                         }
                         break;
 
-                    case 3:
+                    case 'c':
                         if (knight->score >= 2500) {
                             knight->score-= 2500;
                             printf("Well played, you win thanks to you score points!\n");
@@ -149,7 +147,7 @@ void npc2_shop(Player* knight){
                 }
                 break;
 
-            case 2:
+            case 'b':
                 shop = 0;
                 printf("You are leaving the shop...\n");
                 break;
