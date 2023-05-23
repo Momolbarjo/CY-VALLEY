@@ -57,17 +57,13 @@ while (1) {
       printf("\n");
     }
    
-  // Getting the key pressed by the player  
-    char input[2];
-    while(getchar() != '\n'); // Clear the input Buffer
-    fgets(input, 2, stdin);
-    usleep(550000);
-    if (input[0] == 'i') {
+    char input=getch();
+    if (input == 'i') {
     interaction(map,player);
 } else {
     
     // Move the window accordling and make the play stay at the center
-    switch (input[0]) {
+    switch (input) {
     case 'z':
        if (player->posPlayer.pos_x > 2 && (map[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '.' || map[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == '@')) {
         player->posPlayer.pos_x--;
@@ -142,19 +138,16 @@ while (1) {
       break;
       case 'e':
       ClearScreen();
-      printf(
-          "What do you want to do?\n1.resume\n2.save\n3.Map\n4.Return to the menu\n"); //display a menu and wait the input of the player//
-      char choice[2];
-    while(getchar() != '\n'); // Clear the input Buffer
-    fgets(choice, 2, stdin);
+      printf("What do you want to do?\na.resume\nb.save\nc.Map\nd.Return to the menu\n"); //display a menu and wait the input of the player//
+      char choice=getch();
      
-     switch(choice[0]){
+     switch(choice){
      	
-     	case '1':
+     	  case 'a':
      	
-     	break;
+     	  break;
      	
-       	case '2':
+       	case 'b':
        	
         ClearScreen();
         printf("Saving...\n");
@@ -164,14 +157,14 @@ while (1) {
         sleep(2);
         break;
         
-        case '3':
+        case 'c':
         
         ClearScreen();
         area_print(map,player);
         sleep(3);
         break;
       
-       case '4':
+       case 'd':
        ClearScreen();
        return 0;  
        }  
