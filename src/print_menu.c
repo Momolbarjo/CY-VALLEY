@@ -46,31 +46,28 @@ int show_menu() {
     printf("\x1b[0m");
     
     printf("\033[0;36m");
-    printf("\n                                   1. \033[0m\033[1;33m%s\033[0m\u2694\n ", "New game");
+    printf("\n                                   a. \033[0m\033[1;33m%s\033[0m\u2694\n ", "New game");
     printf("\033[0;36m");
-    printf("                                      2. \033[0m\033[1;33m%s\033[0m\U0001F4DC\n", "Keys");
+    printf("                                      b. \033[0m\033[1;33m%s\033[0m\U0001F4DC\n", "Keys");
     printf("\033[0;36m");
-    printf("                                         3. \033[0m\033[1;33m%s\033[0m\U0001F4BE\n", "Resume game");
+    printf("                                         c. \033[0m\033[1;33m%s\033[0m\U0001F4BE\n", "Resume game");
     printf("\033[0;36m");
-    printf("                                            4. \033[0m\033[1;33m%s\033[0m\U0001F6AA\n", "Leave");
+    printf("                                            d. \033[0m\033[1;33m%s\033[0m\U0001F6AA\n", "Leave");
 
 
-    int choice;
-    scanf("%d", &choice);
-    getchar(); // Consume newline character from input buffer
-
+    char choice=getch();
     switch (choice) {
-    case 1:
+    case 'a':
 
       return 1;
 
-    case 2:
+    case 'b':
       return 2;
 
-    case 3:
+    case 'c':
     return 3;
 
-    case 4:
+    case 'd':
       exit(0);
 
     default:
