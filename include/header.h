@@ -7,6 +7,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <termios.h>
 
 
 #define SIZE 100
@@ -80,5 +81,6 @@ void saveplayer(const Player* player, const char* fileName);
 void loadgame(int map[SIZE][SIZE], Player* player, const char* playerName, const char* mapName);
 void loadmap(int map[SIZE][SIZE], const char* fileName);
 void loadplayer(Player* player, const char* fileName);
+char getch();
 
 #endif
