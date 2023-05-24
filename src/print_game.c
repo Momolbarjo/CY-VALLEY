@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 void timer(Player *knight) {
     if (knight->npcs.timer_start == true) {
         int minutes = knight->quest_seconds / 60;
@@ -17,6 +16,7 @@ void timer(Player *knight) {
         }
     }
 }
+
 //game_over screen will be called when the player lose like when  he has 0 health point or he missed an quest//
 void game_over(){
   
@@ -27,6 +27,7 @@ void game_over(){
     printf("| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  /  \n");
     printf("| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\  \n");
     printf(" \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\ \n");
+    deleteSaveFiles("game.bin", "map.bin");
     exit(0);
 }
 
@@ -36,9 +37,9 @@ void Introduction(Player* knight){
     knight->itemsPlayer.herbs=0 ;
     knight->itemsPlayer.woods=0;
     knight->score=0;
-    knight->health = 100;
+    knight->health =101;
     knight->dimensions=0;
-    knight->quest_seconds=150;
+    knight->quest_seconds=250;
     knight->npcs.npc1_step1=false;
     knight->npcs.npc2_step1=false;
     knight->npcs.npc1_step2=false;
@@ -97,13 +98,7 @@ void print_Overlay(Player *knight) {
   printf("                                                           %s\n",knight->itemsPlayer.item3);
  
     
-  if(knight->health==0){ 
-    ClearScreen();
-    printf("The ennemy killed you...");
-    fflush(stdout);
-    sleep(1);  
-    game_over();    
-    }
+  
   if(knight->score >= 5000){
    	knight->score =5000;
 	printf("\nYou reached the maximum score, well played !!");	   
