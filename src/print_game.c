@@ -1,5 +1,22 @@
 #include "header.h"
 
+
+void timer(Player *knight) {
+    if (knight->npcs.timer_start == true) {
+        int minutes = knight->quest_seconds / 60;
+        int seconds = knight->quest_seconds % 60;
+
+        printf("Time left: %d:%02d\n", minutes, seconds);
+
+        knight->quest_seconds--;
+
+        if (knight->quest_seconds < 0) {
+            printf("The time is over, bye bye...");
+            sleep(1);
+            game_over();
+        }
+    }
+}
 //game_over screen will be called when the player lose like when  he has 0 health point or he missed an quest//
 void game_over(){
   
