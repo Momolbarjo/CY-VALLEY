@@ -1,8 +1,16 @@
 #include "header.h"
+//fileExists check is a save exist. 
+bool fileExists(const char* fileName) {
+    FILE* file = fopen(fileName, "rb");
+    if (file != NULL) {
+        fclose(file);
+        return true;
+    }
+}
 
 void savegame(const int map[SIZE][SIZE], const Player* player, const char* playerName, const char* mapName) {
-    savemap(map, mapName);  // Sauvegarder la map dans le fichier nomCarte
-    saveplayer(player, playerName);  // Sauvegarder la structure du joueur dans le fichier nomJoueur
+    savemap(map, mapName);  // save the map in the  mapName file
+    saveplayer(player, playerName);  // save the player structure in the playerName file
 }
 
 void savemap(const int map[SIZE][SIZE], const char* fileName) {
@@ -22,8 +30,15 @@ void saveplayer(const Player* player, const char* fileName){
 }
 
 void loadgame(int map[SIZE][SIZE], Player* player, const char* playerName, const char* mapName) {
-    loadmap(map, mapName);  // Charger la map à partir du fichier nomCarte
-    loadplayer(player, playerName);  // Charger la structure du joueur à partir du fichier nomJoueur
+    
+     if (!fileExists(mapName) || !fileExists(playerName)) {
+        printf("No save.\n");
+        exit(0);
+    }
+    
+    loadmap(map, mapName);  // loading the map using the mapname file
+    loadplayer(player, playerName);  // loading the player structure using the playerName file
+
 }
 
 
@@ -41,4 +56,19 @@ void loadplayer(Player* player, const char* fileName) {
         fread(player, sizeof(Player), 1, file);
         fclose(file);
     }
+}
+
+void deleteMapSaveFile(const char* fileName) {
+    int status = remove(fileName);    
+}
+
+// Fonction pour supprimer le fichier de sauvegarde du joueur
+void deletePlayerSaveFile(const char* fileName) {
+    int status = remove(fileName);
+    
+}
+// Function to delete the save
+void deleteSaveFiles(const char* mapFileName, const char* playerFileName) {
+    deleteMapSaveFile(mapFileName);
+    deletePlayerSaveFile(playerFileName);
 }
