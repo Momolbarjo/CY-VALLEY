@@ -87,6 +87,11 @@ void print_Overlay(Player *knight) {
     sleep(1);  
     game_over();    
     }
+  if(knight->score >= 5000){
+   	knight->score =5000;
+	printf("\nYou reached the maximum score, well played !!");	   
+}
+
 }
 
 //area_print display for a few second an 35*35 area of the map//
