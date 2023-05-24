@@ -60,6 +60,7 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
    else if (knight->npcs.npc2_step1==false && knight->dimensions==3){
         printf("Well played...");
         knight->npcs.npc2_step1=true;
+        knight->npcs.timer_start=true;
         sleep(2);//step 2:
         fflush(stdout);
    }
@@ -89,12 +90,13 @@ void npc2_shop(Player* knight){
     int shop = 1;
 
     while (shop) {
+    	
         printf("Welcome to my shop, what do you want?\n");
         printf("a. buy items\n");
-        printf("a. leave the shop\n");
+        printf("b. leave the shop\n");
         
 
-        char choice=getchar();
+        char choice=getch();
         ClearScreen();
 
         switch (choice) {
@@ -107,7 +109,7 @@ void npc2_shop(Player* knight){
                 
 
 
-                char buyItem=getchar();
+                char buyItem=getch();
                 ClearScreen();
 
                 switch (buyItem) {
@@ -152,7 +154,7 @@ void npc2_shop(Player* knight){
                 printf("You are leaving the shop...\n");
                 break;
 
-            default:
+            	default:
                 printf("Invalid choice.\n");
                 break;
         }
@@ -206,9 +208,17 @@ void gift_interaction( Player *player){
 
         case 1:
             player->health-=50;
+            if(player->health==0){
+            	printf("Unlucky...");
+            	fflush(stdout);
+            	sleep(1);
+            	game_over();
+            	}
             break;
 
         case 2:
+            printf("Unlucky");
+            sleep(1);
             game_over();
             break;
 
