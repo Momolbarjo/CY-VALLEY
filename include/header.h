@@ -1,6 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
-#include "header.h"
+#include "valley.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -82,6 +82,10 @@ void loadgame(int map[SIZE][SIZE], Player* player, const char* playerName, const
 void loadmap(int map[SIZE][SIZE], const char* fileName);
 void loadplayer(Player* player, const char* fileName);
 void timer(Player *knight);
+void deleteMapSaveFile(const char* fileName);
+void deletePlayerSaveFile(const char* fileName);
+void deleteSaveFiles(const char* mapFileName, const char* playerFileName);
+bool fileExists(const char* fileName);
 char getch();
 
 #endif
