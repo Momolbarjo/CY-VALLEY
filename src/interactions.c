@@ -1,4 +1,5 @@
 #include "header.h"
+
 char getch() {
     char buf = 0;
     struct termios old = {0};
@@ -195,7 +196,7 @@ void npc1_quest(int map[SIZE][SIZE], Player* knight){
 
 //The gift  interaction give randomly to the player +500 points of score,a game over...//
 void gift_interaction( Player *player){
-    int random=rand()%6;
+    int random=rand()%5;
     sleep(1);
     printf("%d",random);
 
@@ -206,31 +207,23 @@ void gift_interaction( Player *player){
             player->health+=50;
             break;
 
-        case 1:
-            player->health-=50;
-            if(player->health==0){
-            	printf("Unlucky...");
-            	fflush(stdout);
-            	sleep(1);
-            	game_over();
-            	}
-            break;
 
-        case 2:
+        case 1:
             printf("Unlucky");
+            fflush(stdout);
             sleep(1);
             game_over();
             break;
 
-        case 3:
+        case 2:
             player->score=0;
             break;
 
-        case 4:
+        case 3:
             player->itemsPlayer.herbs=0;
             break;
 
-        case 5:
+        case 4:
             player->score+=500;
             break;
 
@@ -239,6 +232,14 @@ void gift_interaction( Player *player){
 
 //This function will check which caractere is above the player and simulate the action associated with this charactere//
 int interaction(int board[SIZE][SIZE], Player* knight) {
+
+     if(knight->health<=0){ 
+        ClearScreen();
+        printf("The ennemy killed you...");
+        fflush(stdout);
+        sleep(1);  
+        game_over();    
+        }
     
     if(board[knight->posPlayer.pos_x][knight->posPlayer.pos_y] == '@' && knight->itemsPlayer.herbs <20) {
         knight->itemsPlayer.herbs++;
@@ -287,27 +288,28 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
         sleep(2);
     }
 
-    if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == '!'){
-        if(strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0){
-            knight->health-=30;
-            knight->score+=50;
-            board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
+    if (board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] == '!') {
+        if (strcmp(knight->itemsPlayer.item1, "\u2694") == 0 || strcmp(knight->itemsPlayer.item2, "\u2694") == 0 || strcmp(knight->itemsPlayer.item3, "\u2694") == 0) {
+            knight->health -= 30;
+            knight->score += 50;
+            board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] = '.';
+        } else if (strcmp(knight->itemsPlayer.item1, "\u2694") == 0 || strcmp(knight->itemsPlayer.item2, "\u2694") == 0 || strcmp(knight->itemsPlayer.item3, "\u2694") == 0) {
+            if (strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0) {
+                knight->health -= 15;
+                knight->score += 50;
+                board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] = '.';
+            } else {
+                knight->health -= 30;
+                knight->score += 50;
+                board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] = '.';
+            }
+        } else if (strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0) {
+            knight->health -= 15;
+        } else {
+            knight->health -= 50;
         }
-        else if((strcmp(knight->itemsPlayer.item1, "\u2694")==0 ||strcmp(knight->itemsPlayer.item2 , "\u2694")==0 || strcmp(knight->itemsPlayer.item3, "\u2694")==0)&&(strcmp(knight->itemsPlayer.item1, "\U0001F6E1")==0 ||strcmp(knight->itemsPlayer.item2 , "\U0001F6E1")==0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1")==0)) {
-            knight->health-=15;
-            knight->score+=50;
-            board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y]='.';
-        } 
-        else if(strcmp(knight->itemsPlayer.item1, "\U0001F6E1")==0 ||strcmp(knight->itemsPlayer.item2 , "\U0001F6E1")==0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1")==0){
-            knight->health-=15;
-        }
-        else{
-                
-              knight->health-=50;
-        
-        }
-
     }
+
 
     if(board[knight->posPlayer.pos_x-1][knight->posPlayer.pos_y] == 'T'){
        teleporter_interaction(board,knight);      
