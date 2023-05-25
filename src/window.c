@@ -138,7 +138,7 @@ while (1) {
       break;
       case 'e':
       ClearScreen();
-      printf("What do you want to do?\na.resume\nb.save\nc.Map\nd.Return to the menu\n"); //display a menu and wait the input of the player//
+      printf("What do you want to do?\n\na.resume\nb.save\nc.Map\nd.Return to the menu\n"); //display a menu and wait the input of the player//
       char choice=getch();
      
      switch(choice){
