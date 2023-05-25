@@ -8,7 +8,7 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
    setbuf(stdout, NULL);//disable the buffer in order to force display
    //step 1:
    if(knight->dimensions<3 && knight->npcs.npc2_step1==false){
-        printf("Hello... brave knight,when you will  cross at least 3 dimensions,come back...");
+        printf("Hello... brave knight,when you will  cross 3 dimensions,come back...But if you cross more than 3...you will be block here for the rest of your life");
         knight->npcs.timer_start=true;
         sleep(2);
         fflush(stdout);
@@ -54,7 +54,6 @@ void npc2_shop(Player* knight){
                        "                                      |_|    \n";
 
 
-
     while (shop) {
         ClearScreen();
          printf("%s", text);
@@ -76,7 +75,6 @@ void npc2_shop(Player* knight){
 
 
                 char buyItem=getch();
-                ClearScreen();
 
                 switch (buyItem) {
                     case 'a':
@@ -84,8 +82,10 @@ void npc2_shop(Player* knight){
                             knight->itemsPlayer.herbs -= 5;
                             knight->health+=20;
                             printf("You've got + 20 health points ! \n");
+                            sleep(1);
                         } else {
                             printf("You dont have enough \U0001F33F ...\n");
+                            sleep(1);
                         }
                         break;
 
@@ -95,8 +95,10 @@ void npc2_shop(Player* knight){
                             knight->itemsPlayer.woods -= 3;
                             knight->score+=200;
                             printf("You've got + 200  score points! \n");
+                            sleep(1);
                         } else {
                             printf("You dont have enough resources...\n");
+                            sleep(1);
                         }
                         break;
 
@@ -104,25 +106,32 @@ void npc2_shop(Player* knight){
                         if (knight->score >= 2500) {
                             knight->score-= 2500;
                             printf("Well played, you win thanks to you score points!\n");
-                            void display_end_screen();
+                            sleep(1);
+                            display_end_screen();
+                            break;
                         } else {
                             printf("You dont have enough score points ...\n");
+                            sleep(1);
                         }
                         break;
 
                     default:
                         printf("Invalid choice.\n");
+                        sleep(1);
                         break;
                 }
                 break;
+             
 
             case 'b':
                 shop = 0;
                 printf("You are leaving the shop...\n");
+                sleep(1);
                 break;
 
             	default:
                 printf("Invalid choice.\n");
+                sleep(1);
                 break;
         }
     }
