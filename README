@@ -1,1 +1,54 @@
+                                               CY-Valley
 
+Starting the game:
+Type the command "make" in the terminal.
+This will compile and launch the game.
+
+Main menu:
+You are presented with 4 choices: "new game" to start a new game, "Instructions" to get some informations about the game's gameplay, "load game" to resume a saved game if one exists, and finally "leave" to exit the game.
+
+New game:
+You will be asked for your pseudonym, but be careful, as in real games, a space will be considered as the end of your pseudonym (e.g., if you type "bon jour," your pseudonym will be "bon"). Of course, if your pseudonym is too long, you will be asked to enter it again.
+You appear on the map and can move using the 'z' key to go up, the 'q' key to go left, the 's' key to go down, and the 'd' key to go right.
+
+Interactions:
+To interact with objects on the map, use the 'i' key when you are one tile below the object in question. An exception to this is the grass tile, where you need to be on the same tile since we decided that the player is not physically constrained when walking on grass.
+On the map, you will find a sword and a shield. Once collected, they will appear in your inventory.
+The shield allows you to significantly reduce the damage you take from enemies (zombies); however, it does not allow you to kill them.
+With just the sword, you will lose 49% of your health, but you will kill the enemy.
+On the other hand, if you have both the shield and the sword, you can kill the monster by reducing the damage you take.
+
+Gift: This item is a mystery. In each game, when you collect it, an event will occur (such as a game over, gaining 500 points, losing all the grass you have, increasing your HP by 50, or displaying a victory screen).
+
+House: It is just a decorative element, but you can damage it by interacting with it while having the sword in your inventory.
+
+Teleporters: They allow you to teleport to a random location on the map.
+
+Magician: He will give you a quest that involves taking at least 3 teleporters as the first step, and then he will tell you to go to the position he indicates with arrows as the second step. A timer will start and stop at the end of his quest.
+
+Magician's shop: Once the quest is completed, you will unlock his shop, where you can buy score points, health, or end the game.
+
+Person raising their hand: You need to have completed the first quest (magician) for them to decide to talk to you. Be careful about how you respond to them, at least having your sword before talking to them...
+
+Stone: You can only move on empty tiles, but don't forget that you can collect grass and wood...
+
+Game Menu:
+You can open the game menu pressing 'e' while you are playing. You can resume the game, display for a few second a wider map,you can save and return to the main menu.
+Be careful, if you go to the main menu without saving, you will lose your game.
+
+Score:
+Each movement: +1
+Each movement with the stone: +5
+Each ennemy defeated: +50
+
+Victory/defeat conditions:
+Defeat:
+If HP = 0 => game over due to an enemy.
+If timer = 0 => game over due to time.
+If you don't respond as you should to the second NPC => game over because he will kill you.
+/!\ If you receive a game over, your save file will be automatically deleted /!\
+
+Victory:
+If you kill the second npc => victory.
+You can buy the victory to the Magician'shop.
+If you are lucky,you can get the victory in the gift.
