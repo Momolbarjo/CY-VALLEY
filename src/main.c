@@ -2,7 +2,7 @@
 
 int main() {
 
-  open_website_part(3); // Ouverture d'une URL
+  open_website_part(1); // Ouverture d'une URL
   int map[SIZE][SIZE];
   Player knight;
   Position player_position;
