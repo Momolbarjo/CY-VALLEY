@@ -87,5 +87,7 @@ void deletePlayerSaveFile(const char* fileName);
 void deleteSaveFiles(const char* mapFileName, const char* playerFileName);
 bool fileExists(const char* fileName);
 char getch();
+void Cy_shop();
+void display_end_screen();
 
 #endif
