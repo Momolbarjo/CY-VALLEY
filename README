@@ -5,7 +5,7 @@ Type the command "make" in the terminal.
 This will compile and launch the game.
 
 Main menu:
-You are presented with 4 choices: "new game" to start a new game, "Instructions" to get some informations about the game's gameplay, "load game" to resume a saved game if one exists, and finally "leave" to exit the game.
+In the main menu is  presented with 4 choices: "new game" to start a new game, "Instructions" to get some informations about the game's gameplay, "load game" to resume a saved game if one exists, and finally "leave" to exit the game.
 
 New game:
 You will be asked for your pseudonym, but be careful, as in real games, a space will be considered as the end of your pseudonym (e.g., if you type "bon jour," your pseudonym will be "bon"). Of course, if your pseudonym is too long, you will be asked to enter it again.
@@ -28,9 +28,9 @@ Magician: He will give you a quest that involves taking at least 3 teleporters a
 
 Magician's shop: Once the quest is completed, you will unlock his shop, where you can buy score points, health, or end the game.
 
-Person raising their hand: You need to have completed the first quest (magician) for them to decide to talk to you. Be careful about how you respond to them, at least having your sword before talking to them...
+Person raising his hand: You need to have completed the first quest (magician) for then he   decide to talk to you. Be careful about how you respond to them, at least  you must have your sword before talking to him...
 
-Stone: You can only move on empty tiles, but don't forget that you can collect grass and wood...
+Stone: You can only move it on empty tiles, but don't forget that you can collect grass and wood...
 
 Game Menu:
 You can open the game menu pressing 'e' while you are playing. You can resume the game, display for a few second a wider map,you can save and return to the main menu.
