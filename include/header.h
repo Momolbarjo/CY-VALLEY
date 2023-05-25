@@ -65,7 +65,6 @@ void print_board(int board[SIZE][SIZE]);
 void print_Overlay(Player *a);
 void area_print(int board[SIZE][SIZE], Player *knight);
 int move_window(int board[SIZE][SIZE], Player *knight);
-void save_game(Player* data); 
 int show_menu();
 void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests* npcs);
 int interaction(int board[SIZE][SIZE],Player* knight);
