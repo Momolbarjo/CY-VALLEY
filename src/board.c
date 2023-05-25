@@ -4,12 +4,11 @@
 void ClearScreen() { printf("\033[H\033[J"); }
 
 void open_website_part(int i) {
-    size_t len = snprintf(NULL, 0, FORMAT_STRING, i) + 1;
-    char *cmd = malloc(len*sizeof(char));
-    snprintf(cmd, len, FORMAT_STRING, i);
+    char cmd[100];
+    snprintf(cmd, sizeof(cmd), "xdg-open " FORMAT_STRING, i);
     system(cmd);
-    free(cmd);
 }
+
 
 //initialise_board will randomly place the items on the map
 void initialise_board(int board[SIZE][SIZE]) {
