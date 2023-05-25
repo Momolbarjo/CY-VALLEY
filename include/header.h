@@ -1,6 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
-#include "valley.h"
+#include "header.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
