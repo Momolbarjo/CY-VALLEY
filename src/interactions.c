@@ -52,13 +52,13 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
 
    setbuf(stdout, NULL);//disable the buffer in order to force display
    //step 1:
-   if(knight->dimensions!=3 && knight->npcs.npc2_step1==false){
-        printf("Hello... brave knight,when you will  cross 3 dimensions,come back...");
+   if(knight->dimensions<3 && knight->npcs.npc2_step1==false){
+        printf("Hello... brave knight,when you will  cross at least 3 dimensions,come back...");
         knight->npcs.timer_start=true;
         sleep(2);
         fflush(stdout);
    }//step1 done:
-   else if (knight->npcs.npc2_step1==false && knight->dimensions==3){
+   else if (knight->npcs.npc2_step1==false && knight->dimensions>=3){
         printf("Well played...");
         knight->npcs.npc2_step1=true;
         knight->npcs.timer_start=true;
@@ -89,14 +89,15 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
 void npc2_shop(Player* knight){
 
     int shop = 1;
-       const char* text = " _______     __     _____ _                 \n"
-                        "/ ____\\ \\   / /    / ____| |                \n"
+       const char* text = "  _______     __     _____ _                 \n"
+                        " / ____\\ \\   / /    / ____| |                \n"
                        "| |     \\ \\_/ /____| (___ | |__   ___  _ __  \n"
                        "| |      \\   /______\\___ \\| '_ \\ / _ \\| '_ \\ \n"
                        "| |____   | |       ____) | | | | (_) | |_) |\n"
                        " \\_____|  |_|      |_____/|_| |_|\\___/| .__/ \n"
                        "                                      | |    \n"
                        "                                      |_|    \n";
+
 
 
     while (shop) {
