@@ -17,6 +17,33 @@ void timer(Player *knight) {
     }
 }
 
+
+void display_end_screen() {
+    ClearScreen();
+    printf("             \\                  /\n");
+    printf("    _________))                ((__________\n");
+    printf("   /.-------./\\\\    \\    /    //\\.--------.\\\n");
+    printf("  //#######//##\\\\   ))  ((   //##\\\\########\\\\\n");
+    printf(" //#######//###((  ((    ))  ))###\\\\########\\\\\n");
+    printf("((#######((#####\\\\  \\\\  //  //#####))########))\n");
+    printf(" \\##' `###\\\\######\\\\  \\)(/  //######/####' `##/\n");
+    printf("  )'    ``#)'  `##\\`->oo<-'/##'  `(#''     `(\n");
+    printf("          (       ``\\`..'/''       )\n");
+    printf("                     \"\\\"(\n");
+    printf("                      `- )\n");
+    printf("                      / /\n");
+    printf("                     ( /\\\n");
+    printf("                     /\\| \\\n");
+    printf("                    (  \\\n");
+    printf("                        )\n");
+    printf("                       /\n");
+    printf("                      (\n");
+    printf("                      `\n");
+    
+    printf("\n    Thank you for playing our game!\n");
+    exit(0);
+}
+
 //game_over screen will be called when the player lose like when  he has 0 health point or he missed an quest//
 void game_over(){
   
@@ -156,4 +183,3 @@ void area_print(int map[SIZE][SIZE], Player *player){
       printf("\n");
     }
 }
-
