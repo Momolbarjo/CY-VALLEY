@@ -89,10 +89,19 @@ void npc2_quest(int map[SIZE][SIZE], Player* knight) {
 void npc2_shop(Player* knight){
 
     int shop = 1;
+       const char* text = " _______     __     _____ _                 \n"
+                        "/ ____\\ \\   / /    / ____| |                \n"
+                       "| |     \\ \\_/ /____| (___ | |__   ___  _ __  \n"
+                       "| |      \\   /______\\___ \\| '_ \\ / _ \\| '_ \\ \n"
+                       "| |____   | |       ____) | | | | (_) | |_) |\n"
+                       " \\_____|  |_|      |_____/|_| |_|\\___/| .__/ \n"
+                       "                                      | |    \n"
+                       "                                      |_|    \n";
+
 
     while (shop) {
-    	
-        printf("Welcome to my shop, what do you want?\n");
+        ClearScreen();
+         printf("%s", text);
         printf("a. buy items\n");
         printf("b. leave the shop\n");
         
@@ -139,6 +148,7 @@ void npc2_shop(Player* knight){
                         if (knight->score >= 2500) {
                             knight->score-= 2500;
                             printf("Well played, you win thanks to you score points!\n");
+                            void display_end_screen();
                         } else {
                             printf("You dont have enough score points ...\n");
                         }
@@ -162,41 +172,109 @@ void npc2_shop(Player* knight){
     }
 }
 
-void npc1_quest(int map[SIZE][SIZE], Player* knight){
-    if(knight->npcs.npc2_step2==true){
-        printf("I was waiting you... we need you to kill the threat...But are you ready?Y/N");
-        char choice=getchar();
+void npc1_quest(int map[SIZE][SIZE], Player* knight) {
+
+    const char* npc1_quest_text = "    _______     __        _                 _                  \n"
+                              "  / ____\\ \\   / /       | |               | |                 \n"
+                              " | |     \\ \\_/ /_____ __| |_   _____ _ __ | |_ _   _ _ __ ___ \n"
+                              " | |      \\   /______/ _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\\n"
+                              " | |____   | |      | (_| |\\ V /  __/ | | | |_| |_| | | |  __/\n"
+                              "  \\_____|  |_|       \\__,_| \\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\n";
+    
+    if (knight->npcs.npc2_step2 == true) {
+        ClearScreen();
+        printf("%s\n",npc1_quest_text);
+        printf("Who are you?\n");
+        printf("a. A knight who is going to save us.\n");
+        printf("b. You, who are you?\n");
+        char choice = getch();
         
-        switch(choice){
+        switch (choice) {
+            case 'a':
+                printf("Haha, so funny... Poor little guy, you were looking for the threat, but it is in front of you right now...\n");
+                printf("Now, what are you going to do?\n");
+                printf("1. Fight back\n");
+                printf("2. Run away\n");
+                choice = getch();
 
-            case 'Y':
-            //Dragon_fight();
-            break;
+                switch (choice) {
+                    case '1':
+                        printf("You decided to fight back...\n");
+                        printf("The enemy attacks you!\n");
+                        sleep(1);
+                        printf("Choose your action:\n");
+                        printf("1. Attack\n");
+                        printf("2. Defend\n");
+                        choice = getch();
 
-            case 'N':
-            printf("Come back when you feel ready...");
-            sleep(1);
-            break;
+                        switch (choice) {
+                            case '1':
+                            if (strcmp(knight->itemsPlayer.item1, "\u2694") == 0 || strcmp(knight->itemsPlayer.item2, "\u2694") == 0 || strcmp(knight->itemsPlayer.item3, "\u2694") == 0){
+                                printf("You attack the enemy with your sword!\n");
+                                sleep(1);
+                                printf("You defeated the enemy and saved the village!\n");
+                                sleep(1);
+                                display_end_screen();
+                            }
+                            else{
+                                printf("You don't have the sword...The ennemy killed you...");
+                                sleep(1);
+                                game_over();
+                            }
+                                break;
+
+                            case '2':
+                                printf("You defend yourself against the enemy's attack!\n");
+                                sleep(1);
+                                printf("The enemy overpowers you and defeats you...\n");
+                                sleep(1);
+                                game_over();
+
+                                break;
+
+                            default:
+                                printf("Invalid choice.\n");
+                                break;
+                        }
+                        break;
+
+                    case '2':
+                        printf("You chose to run away...\n");
+                        printf("As you turn around, you trip and fall...\n");
+                        sleep(1);
+                        printf("The enemy catches up to you and attacks...\n");
+                        sleep(1);
+                        printf("You were unable to escape and the enemy defeats you...\n");
+                        sleep(1);
+                        game_over();
+                        break;
+
+                    default:
+                        printf("Invalid choice.\n");
+                        break;
+                }
+                break;
+
+            case 'b':
+                printf("Come back when you feel ready...\n");
+                sleep(1);
+                break;
 
             default:
-            printf("I don't understand what you are trying to say...");
-            sleep(1);
-            break;
-
+                printf("I don't understand what you are trying to say...\n");
+                sleep(1);
+                break;
         }
-
-
     }
-    else{
-        printf("Too early...");
+    else {
+        printf("Too early...\n");
         sleep(1);
-        fflush(stdout);
     }
 }
 
 //The gift  interaction give randomly to the player +500 points of score,a game over...//
 void gift_interaction( Player *player){
-    int random=rand()%5;
+    int random=rand()%6;
     sleep(1);
     printf("%d",random);
 
@@ -226,6 +304,13 @@ void gift_interaction( Player *player){
         case 4:
             player->score+=500;
             break;
+        
+        case 5:
+        printf("Lucky You...");
+        fflush(stdout);
+        sleep(1);
+        display_end_screen();
+        break; 
 
     }
 }
