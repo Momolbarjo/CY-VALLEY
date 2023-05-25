@@ -52,3 +52,9 @@ Victory:
 If you kill the second npc => victory.
 You can buy the victory to the Magician'shop.
 If you are lucky,you can get the victory in the gift.
+
+/!\ Known bugs /!\:
+If you open the game menu and press a key other than the ones provided, the game will assume that you want to resume.
+It is possible to reach the end of quest 1 without ever talking to the NPC (if you complete the steps unintentionally).
+For these 2 bugs, we have not fixed them because, like Pokémon, they are intentional.
+Due to the size difference between '.' and Unicode characters, the wave characters may appear shifted, but they are not bugged!
