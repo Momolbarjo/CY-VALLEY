@@ -75,7 +75,7 @@ for (int i = 0; i < 12; i++) {
     do{
           teleports_x = rand() % (SIZE - 6) +3;
           teleports_y = rand() % (SIZE - 6) +3;
-    }while((map[teleports_x][teleports_y] != '.' && map[teleports_x][teleports_y] != '@') && (map[teleports_x-1][rocks_y] != '.' && map[teleports_x-1][teleports_y] != '@')&& (map[teleports_x+1][rocks_y] != '.' && map[teleports_x+1][teleports_y] != '@') );
+    }while((map[teleports_x][teleports_y] != '.' && map[teleports_x][teleports_y] != '@') && (map[teleports_x-1][teleports_y] != '.' && map[teleports_x-1][teleports_y] != '@')&& (map[teleports_x+1][teleports_y] != '.' && map[teleports_x+1][teleports_y] != '@') );
       map[teleports_x][teleports_y] = 'T';
   }
 
