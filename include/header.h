@@ -10,6 +10,8 @@
 
 
 #define SIZE 100
+#define ANSI_COLOR_RESET "\x1b[0m"
+#define ANSI_COLOR_RED "\x1b[31m"
 #define FORMAT_STRING "https://www.youtube.com/watch?v=zRGCzCn5azI/%d"
 
 
