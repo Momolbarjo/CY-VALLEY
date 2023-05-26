@@ -81,7 +81,7 @@ void Introduction(Player* knight){
 
     printf("Welcome brave knight...We need you to save our kingdom...But, what's your name ?\n");
       scanf("%s", knight->name);
-      while(strlen(knight->name)>12){
+      while(strlen(knight->name)>12 || strlen(knight->name)<1){
         printf("Please enter a correct name\n");
         scanf("%s", knight->name);
       }
