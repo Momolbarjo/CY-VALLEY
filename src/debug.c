@@ -44,8 +44,8 @@ void Secure_Boot(Player* knight, Inventory* invent_player, Position* pos, Quests
     printf("Security checking...\n");
 
     
-    if (!invent_player) {
-        printf("Error while loading game due to invent_player struct pointer.\n");
+    if (!invent_player) {// If the current inventory pointer is NULL  
+        printf("Error while loading game due to invent_player struct pointer.\n");// Print an error message indicating the specific pointer
         sleep(3);
         exit(0);
     }
