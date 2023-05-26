@@ -18,7 +18,7 @@ while (1) {
       for (int y = window_y; y < window_y + 50; y++) {
         if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
           if (x == player->posPlayer.pos_x && y == player->posPlayer.pos_y) {
-            printf(ANSI_COLOR_YELLOW "P " ANSI_COLOR_RESET);
+            printf("\U0001F977");
           } else if (map[x][y] == '*') {
         printf("\u2694 ");
       } else if (map[x][y] == '@') {
