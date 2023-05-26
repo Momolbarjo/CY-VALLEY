@@ -52,7 +52,7 @@ void randomizer(int map[SIZE][SIZE]) {
           rocks_x = rand() % (SIZE - 6) +3;
           rocks_y = rand() % (SIZE - 6) +3;
     }while(map[rocks_x][rocks_y] != '.' && map[rocks_x][rocks_y] != '@'&& (map[rocks_x][rocks_y+1] != '.' || map[rocks_x][rocks_y+1] != '@') );
-      map[rocks_x][rocks_y] = 'R'; 
+      map[rocks_x][rocks_y] = 'R'; // This loop will continue generating new coordinates until a valid location is found.
   }
  
   for (int i = 0; i < 12; i++) {
