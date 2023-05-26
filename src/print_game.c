@@ -95,8 +95,8 @@ void Introduction(Player* knight){
 void print_Overlay(Player *knight) {
   
   int Health_MAX = 100;
-  if(knight->health>100){
-    knight->health=100;
+  if(knight->health>101){
+    knight->health=101;
 }
   const int Long = 20; // total length of the health bar
   int longHealth=0; // Length of the health bar based on current health points
