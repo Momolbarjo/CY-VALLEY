@@ -19,7 +19,7 @@
 #define ANSI_COLOR_MAGENTA "\x1b[35m"
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_WHITE "\x1b[37m"
-#define FORMAT_STRING "START https://www.youtube.com/watch?v=zRGCzCn5azI/%d" 
+#define FORMAT_STRING "https://www.youtube.com/watch?v=zRGCzCn5azI/%d"
 
 
 typedef struct {
