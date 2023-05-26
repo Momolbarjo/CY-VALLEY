@@ -51,7 +51,7 @@ void randomizer(int map[SIZE][SIZE]) {
     do{
           rocks_x = rand() % (SIZE - 6) +3;
           rocks_y = rand() % (SIZE - 6) +3;
-    }while(map[rocks_x][rocks_y] != '.' && map[rocks_x][rocks_y] != '@'&& (map[rocks_x][rocks_y+1] != '.' || map[rocks_x][rocks_y+1] != '@') );
+    }while(map[rocks_x][rocks_y] != '.' && map[rocks_x][rocks_y] != '@'&& (map[rocks_x+1][rocks_y] != '.' || map[rocks_x+1][rocks_y] != '@') );
       map[rocks_x][rocks_y] = 'R'; // This loop will continue generating new coordinates until a valid location is found.
   }
  
@@ -59,7 +59,7 @@ void randomizer(int map[SIZE][SIZE]) {
     do{
           houses_x = rand() % (SIZE - 6) +3;
           houses_y = rand() % (SIZE - 6) +3;
-    }while(map[houses_x][houses_y] != '.' && map[houses_x][houses_y] != '@'&& (map[houses_x][houses_y+1] != '.' || map[houses_x][houses_y+1] != '@') );
+    }while(map[houses_x][houses_y] != '.' && map[houses_x][houses_y] != '@'&& (map[houses_x+1][houses_y] != '.' || map[houses_x+1][houses_y] != '@') );
       map[houses_x][houses_y] = 'H';
   }
 
@@ -67,7 +67,7 @@ void randomizer(int map[SIZE][SIZE]) {
     do{
           woods_x = rand() % (SIZE - 6) +3;
           woods_y = rand() % (SIZE - 6) +3;
-    }while(map[woods_x][woods_y] != '.' && map[woods_x][woods_y] != '@' && (map[woods_x][woods_y+1] != '.' || map[woods_x][woods_y+1] != '@') );
+    }while(map[woods_x][woods_y] != '.' && map[woods_x][woods_y] != '@' && (map[woods_x+1][woods_y] != '.' || map[woods_x][woods_y] != '@') );
       map[woods_x][woods_y] = 'W';
   }
 
@@ -75,45 +75,45 @@ for (int i = 0; i < 12; i++) {
     do{
           teleports_x = rand() % (SIZE - 6) +3;
           teleports_y = rand() % (SIZE - 6) +3;
-    }while(map[teleports_x][teleports_y] != '.' && map[teleports_x][teleports_y] != '@' && (map[teleports_x][rocks_y+1] != '.' || map[teleports_x][teleports_y+1] != '@') );
+    }while(map[teleports_x][teleports_y] != '.' && map[teleports_x][teleports_y] != '@' && (map[teleports_x+1][rocks_y] != '.' || map[teleports_x+1][teleports_y] != '@') );
       map[teleports_x][teleports_y] = 'T';
   }
 
  do {
         sword_x = rand() % (SIZE - 6) + 3;
         sword_y = rand() % (SIZE - 6) + 3;
-  } while (map[sword_x][sword_y] != '.' && map[sword_x][sword_y] != '@' && (map[sword_x][sword_y+1] != '.' || map[sword_x][sword_y+1] != '@') );
+  } while (map[sword_x][sword_y] != '.' && map[sword_x][sword_y] != '@' && (map[sword_x+1][sword_y] != '.' || map[sword_x+1][sword_y] != '@') );
   map[sword_x][sword_y] = '*';
 
  do {
   shield_x=rand() % (SIZE - 6) + 3;
   shield_y=rand() % (SIZE - 6) + 3;
-  } while (map[shield_x][shield_y] != '.' && map[shield_x][shield_y] != '@' && (map[shield_x][shield_y+1] != '.' || map[shield_x][shield_y+1] != '@') );
+  } while (map[shield_x][shield_y] != '.' && map[shield_x][shield_y] != '@' && (map[shield_x+1][shield_y] != '.' || map[shield_x+1][shield_y] != '@') );
   map[shield_x][shield_y] = '#';
 
  do {
         npc1_x=rand() % (SIZE - 20) + 10;
         npc1_y=rand() % (SIZE - 20) + 10;
-  } while (map[npc1_x][npc1_y] != '.' && map[npc1_x][npc1_y] != '@' && (map[npc1_x][npc1_y+1] != '.' || map[npc1_x][npc1_y+1] != '@') );
+  } while (map[npc1_x][npc1_y] != '.' && map[npc1_x][npc1_y] != '@' && (map[npc1_x+1][npc1_y] != '.' || map[npc1_x+1][npc1_y] != '@') );
   map[npc1_x][npc1_y] = '=';
   
  do {
         npc2_x=rand() % (SIZE - 20) + 10;
         npc2_y=rand() % (SIZE - 20) + 10;
-   } while (map[npc2_x][npc2_y] != '.' && map[npc2_x][npc2_y] != '@' && (map[npc2_x][npc2_y+1] != '.' || map[npc2_x][npc2_y+1] != '@') );
+   } while (map[npc2_x][npc2_y] != '.' && map[npc2_x][npc2_y] != '@' && (map[npc2_x+1][npc2_y] != '.' || map[npc2_x+1][npc2_y] != '@') );
   map[npc2_x][npc2_y] = '^';
 
  do {
         random_x = rand() % (SIZE - 6) + 3;
         random_y = rand() % (SIZE - 6) + 3;
-    } while (map[random_x][random_y] != '.' && map[random_x][random_y] != '@' && (map[random_x][random_y+1] != '.' || map[random_x][random_y+1] != '@') );
+    } while (map[random_x][random_y] != '.' && map[random_x][random_y] != '@' && (map[random_x+1][random_y] != '.' || map[random_x+1][random_y] != '@') );
   map[random_x][random_y] = '~';
   
  for (int i = 0; i < 10; i++) {
     do {
         ennemy_x = rand() % (SIZE - 6) + 3;
         ennemy_y = rand() % (SIZE - 6) + 3;
-    } while (map[ennemy_x][ennemy_y] != '.' && map[ennemy_x][ennemy_y] != '@' && (map[ennemy_x][ennemy_y+1] != '.' || map[ennemy_x][ennemy_y+1] != '@') ); 
+    } while (map[ennemy_x][ennemy_y] != '.' && map[ennemy_x][ennemy_y] != '@' && (map[ennemy_x+1][ennemy_y] != '.' || map[ennemy_x+1][ennemy_y] != '@') ); 
 
     map[ennemy_x][ennemy_y] = '!';
    }
