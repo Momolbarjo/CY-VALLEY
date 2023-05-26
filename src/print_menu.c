@@ -87,36 +87,5 @@ int show_menu() {
   }
 }
 
-    printf("\x1b[0m");
     
-    printf("\033[0;36m");
-    printf("\n                                   a. \033[0m\033[1;33m%s\033[0m\u2694\n ", "New game");
-    printf("\033[0;36m");
-    printf("                                      b. \033[0m\033[1;33m%s\033[0m\U0001F4DC\n", "Keys");
-    printf("\033[0;36m");
-    printf("                                         c. \033[0m\033[1;33m%s\033[0m\U0001F4BE\n", "Resume game");
-    printf("\033[0;36m");
-    printf("                                            d. \033[0m\033[1;33m%s\033[0m\U0001F6AA\n", "Leave");
 
-
-    char choice=getch();
-    switch (choice) {
-    case 'a':
-
-      return 1;
-
-    case 'b':
-      return 2;
-
-    case 'c':
-    return 3;
-
-    case 'd':
-      exit(0);
-
-    default:
-      ClearScreen();
-      printf("Invalid choice. Please try again.\n");
-    }
-  }
-}
