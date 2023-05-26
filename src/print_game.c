@@ -94,7 +94,7 @@ void Introduction(Player* knight){
 //print_Overlay display all the important informations of the player like his health points, score, pieces of wood...//
 void print_Overlay(Player *knight) {
   
-  int Health_MAX = 100;
+  int Health_MAX = 101;
   if(knight->health>101){
     knight->health=101;
 }
