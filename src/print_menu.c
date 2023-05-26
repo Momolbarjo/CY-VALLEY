@@ -21,30 +21,6 @@ int print_game_instructions() {
 int show_menu() {
   while (1) {
    printf("\x1b[31m");
-   #include "header.h"
-
-
-int print_game_instructions() {
-  printf("==========================\n");
-  printf("       GAME INSTRUCTIONS\n");
-  printf("==========================\n\n");
-  printf("- Use the following keys to move your character:\n");
-  printf("  'z' - Move Up\n");
-  printf("  'q' - Move Left\n");
-  printf("  's' - Move Down\n");
-  printf("  'd' - Move Right\n\n");
-  printf("- Your character is represented by 'P' on the game board.\n\n");
-  printf("- Your character has a health bar represented by a percentage. Your health decreases when you encounter obstacles or enemies.\n\n");
-  printf("- Good luck and have fun playing the game!\n\n");
-  sleep(6);
-  ClearScreen();
-  return (0);
-}
-
-
-int show_menu() {
-  while (1) {
-   printf("\x1b[31m");
     printf("                                                                                _    .  ,   .           .  \n");
     printf("██████╗ ██╗   ██╗    ██╗   ██╗ █████╗ ██╗     ██╗     ███████╗██╗   ██╗       */ \\_ *  / \\_      _  *        *   /\\'__        *\n");
     printf("██╔════╝╚██╗ ██╔╝    ██║   ██║██╔══██╗██║     ██║     ██╔════╝╚██╗ ██╔╝       /    \\  /    \\,   ((        .    _/  /  \\  *'\n");
