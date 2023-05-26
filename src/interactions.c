@@ -152,13 +152,13 @@ int interaction(int board[SIZE][SIZE], Player* knight) {
             knight->health -= 30;
             knight->score += 50;
             board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] = '.';
-        } else if ((strcmp(knight->itemsPlayer.item1, "\u2694") == 0 || strcmp(knight->itemsPlayer.item2, "\u2694") == 0 || strcmp(knight->itemsPlayer.item3, "\u2694") == 0) &&(strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0)) {
+        }else if ((strcmp(knight->itemsPlayer.item1, "\u2694") == 0 || strcmp(knight->itemsPlayer.item2, "\u2694") == 0 || strcmp(knight->itemsPlayer.item3, "\u2694") == 0) &&(strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0)) {
                 knight->health -= 15;
                 knight->score += 50;
                 board[knight->posPlayer.pos_x - 1][knight->posPlayer.pos_y] = '.';
-        } else if (strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0) {
+        }else if (strcmp(knight->itemsPlayer.item1, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item2, "\U0001F6E1") == 0 || strcmp(knight->itemsPlayer.item3, "\U0001F6E1") == 0) {
             knight->health -= 15;
-        } else {
+        }else {
             knight->health -= 50;
         }
     }
