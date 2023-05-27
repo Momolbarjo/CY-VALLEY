@@ -38,7 +38,7 @@ typedef struct {
 
 
 typedef struct {
-  char name[70];
+  char name[20];
   int health;
   Inventory itemsPlayer;
   int dimensions;
