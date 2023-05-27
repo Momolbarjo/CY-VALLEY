@@ -3,6 +3,7 @@
 Starting the game:
 Type the command "make" in the terminal.
 This will compile and launch the game.
+"rm valley" to clean
 
 Main menu:
 In the main menu is  presented with 4 choices: "new game" to start a new game, "Instructions" to get some informations about the game's gameplay, "load game" to resume a saved game if one exists, and finally "leave" to exit the game.
