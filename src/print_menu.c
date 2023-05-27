@@ -10,7 +10,7 @@ int print_game_instructions() {
   printf("  'q' - Move Left\n");
   printf("  's' - Move Down\n");
   printf("  'd' - Move Right\n\n");
-  printf("- Your character is represented by 'P' on the game board.\n\n");
+  printf("- Your character is represented by  the ninja on the game board.\n\n");
   printf("- Your character has a health bar represented by a percentage. Your health decreases when you encounter obstacles or enemies.\n\n");
   printf("- Good luck and have fun playing the game!\n\n");
   sleep(6);
