@@ -62,7 +62,6 @@ void deleteMapSaveFile(const char* fileName) {
     int status = remove(fileName);    
 }
 
-// Fonction pour supprimer le fichier de sauvegarde du joueur
 void deletePlayerSaveFile(const char* fileName) {
     int status = remove(fileName);
     
