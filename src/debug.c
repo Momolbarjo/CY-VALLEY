@@ -1,5 +1,5 @@
 #include "header.h"
-
+//clear buffer will just ignore all the charactere until '\n'
 void clear_buffer(){
   while(getchar() != '\n'){
   }
