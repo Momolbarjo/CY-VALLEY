@@ -81,5 +81,6 @@ bool fileExists(const char* fileName);
 char getch();
 void Cy_shop();
 void display_end_screen();
+void clear_buffer();
 
 #endif
