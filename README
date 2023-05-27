@@ -59,4 +59,5 @@ If you open the game menu and press a key other than the ones provided, the game
 It is possible to reach the end of quest 1 without ever talking to the NPC (if you complete the steps unintentionally).
 For these 2 bugs, we have not fixed them because, like Pokémon, they are intentional.
 Due to the size difference between '.' and Unicode characters, the wave characters may appear shifted, but they are not bugged!
+Sometime like 1/999 times we dont know why , you can spawn on the map with an impressive number of wood and herbs, we didnt found the issue because in the menu asking for you name , your number of herbs and woods are equals to 0.
 
