@@ -1,7 +1,5 @@
 # CY-Valley
 
-Welcome to CY-Valley! This README will guide you through the essentials of starting the game, understanding the gameplay mechanics, and navigating the various in-game elements.
-
 ## Starting the Game
 
 1. **Compile and Launch:**
