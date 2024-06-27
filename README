@@ -1,63 +1,74 @@
-                                               CY-Valley
+# CY-Valley
 
-Starting the game:
-Type the command "make" in the terminal.
-This will compile and launch the game.
-"rm valley" to clean
+Welcome to CY-Valley! This README will guide you through the essentials of starting the game, understanding the gameplay mechanics, and navigating the various in-game elements.
 
-Main menu:
-In the main menu is  presented with 4 choices: "new game" to start a new game, "Instructions" to get some informations about the game's gameplay, "load game" to resume a saved game if one exists, and finally "leave" to exit the game.
+## Starting the Game
 
-New game:
-You will be asked for your pseudonym, but be careful, as in real games, a space will be considered as the end of your pseudonym (e.g., if you type "bon jour," your pseudonym will be "bon"). Of course, if your pseudonym is too long, you will be asked to enter it again.
-You appear on the map and can move using the 'z' key to go up, the 'q' key to go left, the 's' key to go down, and the 'd' key to go right.
+1. **Compile and Launch:**
+   - Open the terminal.
+   - Type the command: `make`
+   - This will compile and launch the game.
 
-Interactions:
-To interact with objects on the map, use the 'i' key when you are one tile below the object in question. An exception to this is the grass tile, where you need to be on the same tile since we decided that the player is not physically constrained when walking on grass.
-On the map, you will find a sword and a shield. Once collected, they will appear in your inventory.
-The shield allows you to significantly reduce the damage you take from enemies (zombies); however, it does not allow you to kill them.
-With just the sword, you will lose 49% of your health, but you will kill the enemy.
-On the other hand, if you have both the shield and the sword, you can kill the monster by reducing the damage you take.
+2. **Cleaning Up:**
+   - To clean the build, type: `rm valley`
 
-Gift: This item is a mystery. In each game, when you collect it, an event will occur (such as a game over, gaining 500 points, losing all the grass you have, increasing your HP by 50, or displaying a victory screen).
+## Main Menu
 
-House: It is just a decorative element, but you can damage it by interacting with it while having the sword in your inventory.
+Upon launching the game, you will be presented with the main menu offering four choices:
 
-Teleporters: They allow you to teleport to a random location on the map.
+1. **New Game:** Start a new adventure.
+2. **Instructions:** Get information about the gameplay mechanics.
+3. **Load Game:** Resume a previously saved game (if available).
+4. **Leave:** Exit the game.
 
-Magician: He will give you a quest that involves taking at least 3 teleporters as the first step, and then he will tell you to go to the position he indicates with arrows as the second step. A timer will start and stop at the end of his quest.
+## New Game
 
-Magician's shop: Once the quest is completed, you will unlock his shop, where you can buy score points, health, or end the game.
+- **Movement:** Use the 'z', 'q', 's', 'd' keys to move your character around the map.
 
-Person raising his hand: You need to have completed the first quest (magician) for then he   decide to talk to you. Be careful about how you respond to them, at least  you must have your sword before talking to him...
+## Interactions
 
-Stone: You can only move it on empty tiles, but don't forget that you can collect grass and wood...
+- **General Interaction:** Press 'i' to interact with objects when standing one tile below them.
+  - **Exception:** For grass tiles, stand directly on them to interact.
+- **Items:**
+  - **Sword and Shield:** Found on the map and added to your inventory upon collection.
+    - **Shield:** Reduces damage from enemies but does not kill them.
+    - **Sword:** Kills enemies but you lose 49% health.
+    - **Sword + Shield:** Allows you to kill enemies while reducing damage taken.
+- **Gift:** A mystery item with a random effect (e.g., game over, +500 points, loss of grass, +50 HP, victory screen).
+- **House:** Decorative; can be damaged if you interact with it while holding the sword.
+- **Teleporters:** Teleport you to a random location on the map.
+- **Magician:** Provides a quest to the player.
+- **Magician's Shop:** Unlocks after completing the quest, allowing you to buy score points, health, or end the game.
+- **NPC (Person Raising Hand):** Available for interaction after completing the magician's quest. Ensure you have the sword before talking to them.
 
-Game Menu:
-You can open the game menu pressing 'e' while you are playing. You can resume the game, display for a few second a wider map,you can save and return to the main menu.
-Be careful, if you go to the main menu without saving, you will lose your game.
+## Special Objects
 
-Score:
-Each movement: +1
-Each movement with the stone: +5
-Each ennemy defeated: +50
+- **Stone:** Can be moved only on empty tiles. Remember, you can collect grass and wood.
 
-Victory/defeat conditions:
-Defeat:
-If HP = 0 => game over due to an enemy.
-If timer = 0 => game over due to time.
-If you don't respond as you should to the second NPC => game over because he will kill you.
-/!\ If you receive a game over, your save file will be automatically deleted /!\
+## Game Menu
 
-Victory:
-If you kill the second npc => victory.
-You can buy the victory to the Magician'shop.
-If you are lucky,you can get the victory in the gift.
+- **Accessing the Menu:** Press 'e' while playing to open the game menu.
 
-/!\ Known bugs /!\:
-If you open the game menu and press a key other than the ones provided, the game will assume that you want to resume.
-It is possible to reach the end of quest 1 without ever talking to the NPC (if you complete the steps unintentionally).
-For these 2 bugs, we have not fixed them because, like Pokémon, they are intentional.
-Due to the size difference between '.' and Unicode characters, the wave characters may appear shifted, but they are not bugged!
-Sometime like 1/999 times we dont know why , you can spawn on the map with an impressive number of wood and herbs, we didnt found the issue because in the menu asking for you name , your number of herbs and woods are equals to 0.
+## Score System
 
+- **Each Movement:** +1 point
+- **Moving with the Stone:** +5 points
+- **Defeating Enemies:** +50 points
+
+## Victory and Defeat Conditions
+
+### Defeat
+
+- **HP = 0:** Game over due to enemy attack.
+- **Timer = 0:** Game over due to time running out.
+- **Incorrect Response to NPC:** Game over if you don't respond correctly to the second NPC (they will kill you).
+
+> **Note:** Upon a game over, your save file will be automatically deleted.
+
+### Victory
+
+- **Kill the Second NPC:** Achieve victory.
+- **Purchase Victory:** Buy victory from the Magician's shop.
+- **Lucky Gift:** Receive victory through the gift item.
+
+Enjoy your adventure in CY-Valley! Good luck and have fun!
