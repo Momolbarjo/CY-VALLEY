@@ -24,7 +24,7 @@ while (1) {
       } else if (map[x][y] == '@') {
         printf("\U0001F33F");
       } else if (map[x][y] == '=') {
-        printf( "\U0001F64B"); // Ajout d'un espace après l'emoji
+        printf( "\U0001F64B"); 
       } else if (map[x][y] == '^') {
         printf("\U0001F9D9");
       } else if (map[x][y] == '#') {
@@ -72,7 +72,7 @@ while (1) {
     }
     else if(player->posPlayer.pos_x > 2 && map[player->posPlayer.pos_x-1][player->posPlayer.pos_y] == 'R') {
         if(map[player->posPlayer.pos_x-2][player->posPlayer.pos_y] == '.') {
-            // Push the box to the new position
+            
             map[player->posPlayer.pos_x-2][player->posPlayer.pos_y] = 'R';
             map[player->posPlayer.pos_x-1][player->posPlayer.pos_y] = '.';
             player->posPlayer.pos_x--;
@@ -89,7 +89,7 @@ while (1) {
       }
       else if(player->posPlayer.pos_x > 2 &&  map[player->posPlayer.pos_x ][player->posPlayer.pos_y-1]=='R'){
       if(map[player->posPlayer.pos_x][player->posPlayer.pos_y-2] == '.') {
-            // Push the box to the new position
+            
             map[player->posPlayer.pos_x][player->posPlayer.pos_y-2] = 'R';
             map[player->posPlayer.pos_x][player->posPlayer.pos_y-1] = '.';
             player->posPlayer.pos_y--;
@@ -125,7 +125,7 @@ while (1) {
       }
       else if( player->posPlayer.pos_x < SIZE - 3 &&  map[player->posPlayer.pos_x ][player->posPlayer.pos_y+1]=='R'){
         if(map[player->posPlayer.pos_x][player->posPlayer.pos_y+2] == '.') {
-           // Push the box represented by the rock to the new position
+           
             map[player->posPlayer.pos_x][player->posPlayer.pos_y+2] = 'R';
             map[player->posPlayer.pos_x][player->posPlayer.pos_y+1] = '.';
             player->posPlayer.pos_y++;
